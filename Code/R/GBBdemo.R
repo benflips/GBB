@@ -14,6 +14,7 @@ temp<-run.sim(n=n,
 
 plot(temp$N, type="l")
 plot(temp$mean.di, type="l")
+plot(temp$X.g, type="l")
 
 
 

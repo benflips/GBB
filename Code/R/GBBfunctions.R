@@ -61,6 +61,12 @@ reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve){
 	pop<-dPhen(pop2, eSize, Ve)
 }
 
+# moves individuals on the lattice
+disperse<-function(pop){
+	pop[,"X"]<-rnorm(nrow(pop), mean=pop[,"X"], sd=pop[,"di"])
+	pop[,"X"]<-ifelse(pop[,"X"]<0, -pop[,"X"], pop[,"X"])
+	pop
+}
 
 run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	temp<-init(n, nLoci, eSize)
@@ -68,12 +74,17 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	Ve<-temp$Ve
 	rm(temp)
 	N<-nrow(pop)
-	mean.di<-c()
+	mean.di<-mean(pop[,"di"])
+	X.g<-var(pop[,"X"])
+	X.min<-min(pop[,"X"])
 	for (gg in 1:100){
 		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve)
+		pop<-disperse(pop)
 		N<-c(N, nrow(pop))
 		mean.di<-c(mean.di, mean(pop[,"di"]))
+		X.g<-c(X.g, var(pop[,"X"]))
+		X.min<-c(X.min, min(pop[,"X"]))
 	}
-	list(N=N, mean.di=mean.di)
+	list(N=N, mean.di=mean.di, X.g=X.g, X.min=X.min, pop=pop)
 }
 
