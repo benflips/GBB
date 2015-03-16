@@ -11,6 +11,9 @@ temp<-run.sim(n=n,
 	eSize=eSize,
 	Rmax=Rmax,
 	Nstar=Nstar)
-plot(temp)
-plot(temp$y, temp$z)
-hist(temp$x)
+
+plot(temp$N, type="l")
+plot(temp$mean.di, type="l")
+
+
+

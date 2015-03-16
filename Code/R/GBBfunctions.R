@@ -43,7 +43,7 @@ gametes<-function(poprow){
 }
 
 # reproduces individuals
-reproduce<-function(pop, Rmax, Nstar, nLoci){
+reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve){
 	EW<-bevHolt(nrow(pop), Rmax, Nstar)*tOff(pop[,"di"])
 	W<-rpois(length(EW), EW)
 	gtype.loc<-grepl("a", colnames(pop))
@@ -58,7 +58,7 @@ reproduce<-function(pop, Rmax, Nstar, nLoci){
 			pop2<-rbind(pop2, temp)
 		}
 	}
-	pop2
+	pop<-dPhen(pop2, eSize, Ve)
 }
 
 
@@ -68,10 +68,12 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	Ve<-temp$Ve
 	rm(temp)
 	N<-nrow(pop)
-	for (gg in 1:10){
-		pop<-reproduce(pop, Rmax, Nstar, nLoci)
+	mean.di<-c()
+	for (gg in 1:100){
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve)
 		N<-c(N, nrow(pop))
+		mean.di<-c(mean.di, mean(pop[,"di"]))
 	}
-	N
+	list(N=N, mean.di=mean.di)
 }
 
