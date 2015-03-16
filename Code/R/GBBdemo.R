@@ -4,14 +4,17 @@ source("GBBfunctions.R")
 # define global parameters
 n<-100
 nLoci<-10
-Rmax=5
-maxGDisp<-4
+Rmax<-5
+Nstar<-30
+maxGDisp<-log(4)
 eSize<-maxGDisp/nLoci
-Ve<-(maxGDisp/4)^2
+
 
 
 temp<-run.sim(n=n, 
 	nLoci=nLoci, 
 	eSize=eSize,
-	Ve=Ve,
 	Rmax=Rmax)
+plot(temp)
+
+hist(temp$x)
