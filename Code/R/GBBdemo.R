@@ -1,11 +1,13 @@
+#To do: run sims on current code to confirm expectations
+
 rm(list=ls())
 source("GBBfunctions.R")
 
 # define global parameters
-n<-100
+n<-10
 nLoci<-10
 Rmax<-5
-Nstar<-30
+Nstar<-100
 maxGDisp<-log(4)
 eSize<-maxGDisp/nLoci
 
@@ -14,7 +16,8 @@ eSize<-maxGDisp/nLoci
 temp<-run.sim(n=n, 
 	nLoci=nLoci, 
 	eSize=eSize,
-	Rmax=Rmax)
+	Rmax=Rmax,
+	Nstar=Nstar)
 plot(temp)
-
+plot(temp$y, temp$z)
 hist(temp$x)
