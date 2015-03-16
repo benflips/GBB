@@ -14,10 +14,15 @@ dPhen<-function(pop, eSize, Ve){
 	ptypes
 }
 
+# calculates fitness given Rmax and phenotype
+tOff<-function(Rmax, phen, k=1){
+	Rmax*exp(-k*phen)
+}
 
-
-run.sim<-function(n, nLoci, eSize, Ve){
+run.sim<-function(n, nLoci, eSize, Ve, Rmax){
 	pop<-init(n, nLoci)
-	dPhen(pop, eSize, Ve)
+	disp<-dPhen(pop, eSize, Ve)
+	fitness<-tOff(Rmax, disp)
+	list(x=disp, y=fitness)
 }
 
