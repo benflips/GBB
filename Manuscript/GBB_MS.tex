@@ -1,0 +1,200 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Ben Phillips, phillipsb@unimelb.edu.au},
+            pdftitle={Genetic backburn},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{5}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+\setlength{\droptitle}{-2em}
+  \title{Genetic backburn}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Ben Phillips,
+\href{mailto:phillipsb@unimelb.edu.au}{\nolinkurl{phillipsb@unimelb.edu.au}}}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{16/03/2015}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Abstract}\label{abstract}
+
+\emph{Stuff}
+
+\section{Introduction}\label{introduction}
+
+More stuff.
+
+\section{Methods}\label{methods}
+
+To investigate this idea, we built a spatially-explicit simulation model
+that tracks a population spreading through space. The population is
+composed of sexually hermaphroditic individuals with discrete
+generations.
+
+\subsection{Population dynamics}\label{population-dynamics}
+
+Each individual in the population has a maximum density-independent rate
+of reproduction, \(R_i\), governed by a universal maximum possible
+fecundity, \(R_{max}\), and an individual fitness modifier, \(w_{i}\),
+such that \(R_i=w_{i}R_{max}\). An individual's expected reproductive
+output, \(\text{E}(W_i)\) is further modified by density dependence,
+described using the Beverton-Holt model:
+
+\[ \text{E}(W_i)=\frac{R_i}{1+\alpha N}\]
+
+where \(\alpha=\frac{R_{max}-1}{N^*}\). In this formulation \(N^*\)
+represents the carrying capacity that would be achieved if all
+individuals achieved a fecundity of \(R_{max}\).
+
+Finally, we introduced demographic stochasticity into the model by
+drawing each individual's expected fecundity from a poisson
+distribution: \(W_i\sim\text{Poiss}(\text{E}(W_i))\)
+
+\subsection{Tables}\label{tables}
+
+\begin{longtable}[c]{@{}lrrrr@{}}
+\caption{This is a GLM summary table.}\tabularnewline
+\toprule
+& Estimate & Std. Error & t value &
+Pr(\textgreater{}\textbar{}t\textbar{})\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& Estimate & Std. Error & t value &
+Pr(\textgreater{}\textbar{}t\textbar{})\tabularnewline
+\midrule
+\endhead
+(Intercept) & -0.03 & 0.09 & -0.35 & 0.73\tabularnewline
+x & 1.98 & 0.08 & 23.33 & 0.00\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Plots}\label{plots}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{GBB_MS_files/figure-latex/carDataPlot-1.pdf}
+\caption{Relationship between x and y. The solid line is least-squares
+linear regression.}
+\end{figure}
+
+\subsection{Citations}\label{citations}
+
+The relationship was first described by Halpern et al. (2006). However,
+there are also opinions that the relationship is spurious (Keil \emph{et
+al.} 2012). We used R for our calculations (R Core Team 2014), and we
+used package \texttt{knitcitations} (Boettiger 2015) to make the
+bibliography.
+
+\section{Results and discussion}\label{results-and-discussion}
+
+Lorem ipsum dolor sit amet, est ad doctus eligendi scriptorem. Mel erat
+falli ut. Feugiat legendos adipisci vix at, usu at laoreet argumentum
+suscipiantur. An eos adhuc aliquip scriptorem, te adhuc dolor
+liberavisse sea. Ponderum vivendum te nec, id agam brute disputando mei.
+
+Putant numquam tacimates at eum. Aliquip torquatos ex vis, mei et quando
+debitis appareat, impetus accumsan corrumpit in usu. Nam mucius facilis
+singulis id, duo ei autem imperdiet instructior. Cu ceteros alienum mel,
+id vix putant impedit, ex idque eruditi forensibus eum. Posse dicunt id
+usu. Ei iracundia constituto sed, duo ne exerci ignota, an eum unum
+conceptam.
+
+Has audire salutandi no, ut eam dicat libris dicunt. Pri hendrerit
+quaerendum adversarium ea, dicat atqui munere et sea. Illum insolens eos
+ne, eu enim graece rationibus mea. At postea utamur mel, eius nonumes
+percipitur at vis. Numquam similique in per, te quo saepe utroque
+pericula.
+
+Ea nonumy volumus usu, no mel inermis dissentias. Dico partiendo
+vituperatoribus eum et. Mea accusam convenire te, usu populo qualisque
+gloriatur ut. Eu eum oratio altera option, ad mea ignota scriptorem. Ne
+suas latine vix, eos oblique sanctus pertinax cu.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+Boettiger, C. (2015). \emph{Knitcitations: Citations for knitr markdown
+files}. Retrieved from \url{https://github.com/cboettig/knitcitations}
+
+Halpern, B.S., Regan, H.M., Possingham, H.P. \& McCarthy, M.A. (2006).
+Accounting for uncertainty in marine reserve design. \emph{Ecol
+Letters}, \textbf{9}, 2--11. Retrieved from
+\url{http://dx.doi.org/10.1111/j.1461-0248.2005.00827.x}
+
+Keil, P., Belmaker, J., Wilson, A.M., Unitt, P. \& Jetz, W. (2012).
+Downscaling of species distribution models: A hierarchical approach (R.
+Freckleton, Ed.). \emph{Methods Ecol Evol}, \textbf{4}, 82--94.
+Retrieved from \url{http://dx.doi.org/10.1111/j.2041-210x.2012.00264.x}
+
+R Core Team. (2014). \emph{R: A language and environment for statistical
+computing}. R Foundation for Statistical Computing, Vienna, Austria.
+Retrieved from \url{http://www.R-project.org/}
+
+\end{document}

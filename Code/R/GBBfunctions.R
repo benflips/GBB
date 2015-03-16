@@ -11,18 +11,26 @@ dPhen<-function(pop, eSize, Ve){
 	gtypes<-pop[,grepl("a", colnames(pop))]
 	gtypes<-apply(gtypes, 1, sum)*eSize
 	ptypes<-rnorm(length(gtypes), mean=gtypes, sd=sqrt(Ve))
-	ptypes
+	exp(ptypes)
 }
 
-# calculates fitness given Rmax and phenotype
-tOff<-function(Rmax, phen, k=1){
-	Rmax*exp(-k*phen)
+# calculates relative fitness given Rmax and phenotype
+tOff<-function(phen, k=1){
+	exp(-k*phen)
 }
+
+# Beverton Holt population growth
+bevHolt<-function(N, R0, Nstar){
+  a<-(R0-1)/Nstar
+  R0/(1+a*N)
+}
+
+
 
 run.sim<-function(n, nLoci, eSize, Ve, Rmax){
 	pop<-init(n, nLoci)
 	disp<-dPhen(pop, eSize, Ve)
-	fitness<-tOff(Rmax, disp)
+	fitness<-tOff(disp)
 	list(x=disp, y=fitness)
 }
 
