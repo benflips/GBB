@@ -15,6 +15,9 @@ temp<-run.sim(n=n,
 plot(temp$N, type="l")
 plot(temp$mean.di, type="l")
 plot(temp$X.g, type="l")
+plot(temp$pop[,"X"], temp$pop[,"di"])
 
+plot(tapply(temp$pop[,"di"], (temp$pop[,"X"] %/% 1), mean), type="l")
+plot(temp$pop[,"X"], dens(temp$pop))
 
 

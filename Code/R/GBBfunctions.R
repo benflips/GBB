@@ -23,7 +23,7 @@ dPhen<-function(pop, eSize, Ve){
 }
 
 # calculates relative fitness (max=1) given dispersal phenotype
-tOff<-function(phen, k=0.1){
+tOff<-function(phen, k=0.01){
 	exp(-k*phen)
 }
 
@@ -44,7 +44,7 @@ gametes<-function(poprow){
 
 # reproduces individuals
 reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve){
-	EW<-bevHolt(nrow(pop), Rmax, Nstar)*tOff(pop[,"di"])
+	EW<-bevHolt(dens(pop), Rmax, Nstar)*tOff(pop[,"di"])
 	W<-rpois(length(EW), EW)
 	gtype.loc<-grepl("a", colnames(pop))
 	pop2<-c()
@@ -53,7 +53,8 @@ reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve){
 		for (ww in 1:W[ii]){
 			temp<-pop[ii,]
 			tempF<-temp
-			tempM<-pop[sample(1:nrow(pop), 1),]
+			popSet<-which((pop[,"X"] %/% 1) == (tempF["X"] %/% 1))
+			tempM<-pop[sample(popSet, 1),]
 			temp[gtype.loc]<-as.vector(rbind(gametes(tempF), gametes(tempM)))
 			pop2<-rbind(pop2, temp)
 		}
@@ -68,6 +69,13 @@ disperse<-function(pop){
 	pop
 }
 
+# calculates density back to the individual
+dens<-function(pop){
+	Xbin<-(pop[,"X"] %/% 1)+1
+	dens<-table(factor(Xbin, levels=1:max(Xbin)))
+	dens[Xbin]
+}
+
 run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	temp<-init(n, nLoci, eSize)
 	pop<-temp$pop
@@ -78,6 +86,7 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	X.g<-var(pop[,"X"])
 	X.min<-min(pop[,"X"])
 	for (gg in 1:100){
+		cat("Working through generation ", gg, "\n")
 		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve)
 		pop<-disperse(pop)
 		N<-c(N, nrow(pop))
