@@ -85,7 +85,7 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens){
 	N<-nrow(pop)
 	mean.di<-mean(pop[,"di"])
 	X.g<-var(pop[,"X"])
-	X.min<-min(pop[,"X"])
+	X.max<-max(pop[,"X"])
 	for (gg in 1:initGens){
 		cat("Working through generation ", gg, "\n")
 		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k)
@@ -93,8 +93,8 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens){
 		N<-c(N, nrow(pop))
 		mean.di<-c(mean.di, mean(pop[,"di"]))
 		X.g<-c(X.g, var(pop[,"X"]))
-		X.min<-c(X.min, min(pop[,"X"]))
+		X.max<-c(X.max, max(pop[,"X"]))
 	}
-	list(N=N, mean.di=mean.di, X.g=X.g, X.min=X.min, pop=pop)
+	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, pop=pop)
 }
 

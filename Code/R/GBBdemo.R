@@ -1,4 +1,4 @@
-#To do: run sims on current code to confirm expectations
+# For ironing out bugs
 
 rm(list=ls())
 source("GBBfunctions.R")
