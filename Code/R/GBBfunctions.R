@@ -22,14 +22,14 @@ dPhen<-function(pop, eSize, Ve){
 	pop
 }
 
-# calculates relative fitness (max=1) given dispersal phenotype
-tOff<-function(phen, k=0.01){
-	exp(-k*phen)
+# returns alpha of the BevHolt function
+tOff<-function(Rmax, Nstar, phen, k){
+	(Rmax-1)/(Nstar*exp(-k*phen))
 }
 
 # Beverton Holt population growth
-bevHolt<-function(N, Rmax, Nstar){
-  a<-(Rmax-1)/Nstar
+bevHolt<-function(N, Rmax, Nstar, a){
+  #a<-(Rmax-1)/Nstar
   Rmax/(1+a*N)
 }
 
@@ -43,8 +43,9 @@ gametes<-function(poprow){
 }
 
 # reproduces individuals
-reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve){
-	EW<-bevHolt(dens(pop), Rmax, Nstar)*tOff(pop[,"di"])
+reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k){
+	alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
+	EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
 	W<-rpois(length(EW), EW)
 	gtype.loc<-grepl("a", colnames(pop))
 	pop2<-c()
@@ -76,7 +77,7 @@ dens<-function(pop){
 	dens[Xbin]
 }
 
-run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
+run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens){
 	temp<-init(n, nLoci, eSize)
 	pop<-temp$pop
 	Ve<-temp$Ve
@@ -85,9 +86,9 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar){
 	mean.di<-mean(pop[,"di"])
 	X.g<-var(pop[,"X"])
 	X.min<-min(pop[,"X"])
-	for (gg in 1:100){
+	for (gg in 1:initGens){
 		cat("Working through generation ", gg, "\n")
-		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve)
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k)
 		pop<-disperse(pop)
 		N<-c(N, nrow(pop))
 		mean.di<-c(mean.di, mean(pop[,"di"]))

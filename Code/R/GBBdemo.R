@@ -10,7 +10,9 @@ temp<-run.sim(n=n,
 	nLoci=nLoci, 
 	eSize=eSize,
 	Rmax=Rmax,
-	Nstar=Nstar)
+	Nstar=Nstar,
+	k=k,
+	initGens=initGens)
 
 plot(temp$N, type="l")
 plot(temp$mean.di, type="l")
