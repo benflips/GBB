@@ -38,21 +38,20 @@ plotBasicReps<-function(repList, file){
 	X<-pop[,"X"] %/% 3
 	Xplot<-as.numeric(levels(as.factor(X)))
 	Y<-tapply(dens(pop), X, mean)
-	Y2<-tapply(dens(pop), X, range)
-	Y2<-do.call("rbind", Y2)
-	Y2[,2]<-rev(Y2[,2])
-	Ypoly<-as.vector(Y2)
+	#Y2<-tapply(dens(pop), X, range)
+	#Y2<-do.call("rbind", Y2)
+	#Y2[,2]<-rev(Y2[,2])
+	#Ypoly<-as.vector(Y2)
 	Xpoly<-c(Xplot, rev(Xplot))
 	
 	plot(Y~Xplot,
 		xlab=expression(Distance~from~introduction~(italic(x))),
 		ylab="Mean density",
 		bty="l", 
-		type="l", 
-		ylim=range(Ypoly))
-	polygon(Xpoly, Ypoly,
-		col=gray(0.5, 0.5) ,
-		border=NA)
+		type="l")
+	#polygon(Xpoly, Ypoly,
+	#	col=gray(0.5, 0.5) ,
+	#	border=NA)
 	
 	Y<-tapply(pop[,"di"], X, mean)
 	Y2<-tapply(pop[,"di"], X, range)

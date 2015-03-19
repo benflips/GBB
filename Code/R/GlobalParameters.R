@@ -5,7 +5,7 @@ nLoci<-20
 Rmax<-5
 Nstar<-100
 n<-Nstar
-maxGDisp<-log(3)
+maxGDisp<-log(4)
 eSize<-maxGDisp/(2*nLoci)
 k<-0.1
 

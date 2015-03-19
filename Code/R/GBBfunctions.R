@@ -18,13 +18,13 @@ dPhen<-function(pop, eSize, Ve){
 	gtypes<-pop[,grepl("a", colnames(pop))]
 	gtypes<-apply(gtypes, 1, sum)*eSize
 	ptypes<-rnorm(length(gtypes), mean=gtypes, sd=sqrt(Ve))
-	pop[,"di"]<-exp(ptypes)
+	pop[,"di"]<-ptypes
 	pop
 }
 
 # returns alpha of the BevHolt function
-tOff<-function(Rmax, Nstar, phen, k){
-	(Rmax-1)/(Nstar*exp(-k*phen))
+tOff<-function(Rmax, Nstar, di, k){
+	(Rmax-1)/(Nstar*exp(-k*exp(di)))
 }
 
 # Beverton Holt population growth
@@ -65,7 +65,7 @@ reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k){
 
 # moves individuals on the lattice
 disperse<-function(pop){
-	pop[,"X"]<-rnorm(nrow(pop), mean=pop[,"X"], sd=pop[,"di"])
+	pop[,"X"]<-rnorm(nrow(pop), mean=pop[,"X"], sd=exp(pop[,"di"]))
 	pop[,"X"]<-ifelse(pop[,"X"]<0, -pop[,"X"], pop[,"X"])
 	pop
 }

@@ -5,8 +5,6 @@ source("GBBfunctions.R")
 source("GlobalParameters.R")
 
 
-initGens<-40
-
 temp<-run.sim(n=n, 
 	nLoci=nLoci, 
 	eSize=eSize,
