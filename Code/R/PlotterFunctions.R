@@ -25,6 +25,29 @@ plotRealisation<-function(runList, file){
 	dev.off()
 }
 
+plotTradeOff<-function(runList, parList, file){
+	pdf(file=file)
+	par(mar=c(5,5,2,2), cex.lab=1.4)
+	
+	X<-seq(0, exp(parList$eSize*parList$nLoci*2), 0.1)
+	a<-tOff(parList$Rmax, parList$Nstar, log(X), parList$k)
+	densLev<-seq(0, parList$Nstar, parList$Nstar/10)
+	Wmat<-c()
+	for (dd in 1:length(densLev)){
+		Wmat<-cbind(Wmat, bevHolt(densLev[dd], parList$Rmax, parList$Nstar, a))
+	}
+	matplot(X, Wmat,
+		xlab=expression(italic(e^d[i])),
+		ylab=expression(E~(italic(W[i]))),
+		bty="l", 
+		type="l",
+		col=gray(seq(0, 1, length=1.3*length(densLev))),
+		lty=1,
+		lwd=2.5)
+		
+	dev.off()
+}
+
 # Takes a list of run.sim lists and plots out mean and variation in results
 plotBasicReps<-function(repList, file){
 	pop<-c()

@@ -7,7 +7,7 @@ Nstar<-100
 n<-Nstar
 maxGDisp<-log(4)
 eSize<-maxGDisp/(2*nLoci)
-k<-0.1
+k<-0.2
 
 
 ## Experiment descriptors
