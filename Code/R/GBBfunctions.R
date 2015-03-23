@@ -1,5 +1,5 @@
 # Initialises the simulation
-init<-function(n, nLoci, eSize){
+init<-function(n, nLoci, eSize, h2){
 	X<-runif(n, 0, 1)
 	alleles<-matrix(rbinom(2*n*nLoci, 1, 0.5), nrow=n,
 		dimnames=list(NULL, paste("a", 1:(2*nLoci), sep="")))
@@ -8,7 +8,7 @@ init<-function(n, nLoci, eSize){
 	gtypes<-pop[,grepl("a", colnames(pop))]
 	gtypes<-apply(gtypes, 1, sum)*eSize
 	Vg<-var(gtypes)
-	Ve<-Vg/0.3
+	Ve<-(Vg-h2*Vg)/h2
 	pop<-dPhen(pop, eSize, Ve)
 	list(pop=pop, Ve=Ve)
 }
@@ -77,8 +77,8 @@ dens<-function(pop){
 	dens[Xbin]
 }
 
-run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens){
-	temp<-init(n, nLoci, eSize)
+run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, h2){
+	temp<-init(n, nLoci, eSize, h2)
 	pop<-temp$pop
 	Ve<-temp$Ve
 	rm(temp)
@@ -95,6 +95,6 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens){
 		X.g<-c(X.g, var(pop[,"X"]))
 		X.max<-c(X.max, max(pop[,"X"]))
 	}
-	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, pop=pop)
+	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, Ve=Ve, pop=pop)
 }
 

@@ -4,13 +4,6 @@ rm(list=ls())
 source("GBBfunctions.R")
 source("GlobalParameters.R")
 
-#check out the trade-off curve
-temp<-init(1000, nLoci, eSize)
-pop<-temp$pop
-alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
-EW<-bevHolt(Nstar/2, Rmax, Nstar, alpha)
-plot(pop[,"di"], EW)
-
 
 temp<-run.sim(n=n, 
 	nLoci=nLoci, 

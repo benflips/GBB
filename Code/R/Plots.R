@@ -8,6 +8,6 @@ plotTradeOff(runList=spreadReps[[1]],
 	file="../../Figures/TradeOff.pdf")
 
 # Plot of a single realisation of spread.
-plotRealisation(runList=spreadReps[[1]], file="../../Figures/Realisation.pdf")
+plotRealisation(runList=spreadReps[[5]], file="../../Figures/Realisation.pdf")
 
 plotBasicReps(spreadReps, file="../../Figures/BasicReps.pdf")

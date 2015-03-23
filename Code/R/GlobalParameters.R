@@ -11,7 +11,7 @@ k<-0.2
 
 
 ## Experiment descriptors
-initGens<-50
+initGens<-30
 monitorGens<-50
 baseReps<-30
 bbReps<-20
