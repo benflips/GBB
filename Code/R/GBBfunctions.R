@@ -1,22 +1,17 @@
 # Initialises the simulation
-init<-function(n, nLoci, eSize, h2){
+init<-function(n, nLoci, eSize, Ve, mu){
 	X<-runif(n, 0, 1)
 	alleles<-matrix(rbinom(2*n*nLoci, 1, 0.5), nrow=n,
 		dimnames=list(NULL, paste("a", 1:(2*nLoci), sep="")))
 	pop<-cbind(X, alleles, di=rep(0, n))
-	# work out appropriate Ve such that h2 ca 0.3
-	gtypes<-pop[,grepl("a", colnames(pop))]
-	gtypes<-apply(gtypes, 1, sum)*eSize
-	Vg<-var(gtypes)
-	Ve<-(Vg-h2*Vg)/h2
-	pop<-dPhen(pop, eSize, Ve)
-	list(pop=pop, Ve=Ve)
+	pop<-dPhen(pop, eSize, Ve, nLoci, mu)
+	pop
 }
 
 # Calculates dispersal phenotype based on individual alleles, their effect, and Ve
-dPhen<-function(pop, eSize, Ve){
+dPhen<-function(pop, eSize, Ve, nLoci, mu){
 	gtypes<-pop[,grepl("a", colnames(pop))]
-	gtypes<-apply(gtypes, 1, sum)*eSize
+	gtypes<-apply(gtypes, 1, sum)*eSize-(nLoci*2*0.5*eSize)+mu
 	ptypes<-rnorm(length(gtypes), mean=gtypes, sd=sqrt(Ve))
 	pop[,"di"]<-ptypes
 	pop
@@ -43,7 +38,7 @@ gametes<-function(poprow){
 }
 
 # reproduces individuals
-reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k){
+reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu){
 	alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
 	EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
 	W<-rpois(length(EW), EW)
@@ -60,7 +55,8 @@ reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k){
 			pop2<-rbind(pop2, temp)
 		}
 	}
-	pop<-dPhen(pop2, eSize, Ve)
+	pop<-dPhen(pop2, eSize, Ve, nLoci, mu)
+	pop
 }
 
 # moves individuals on the lattice
@@ -77,24 +73,21 @@ dens<-function(pop){
 	dens[Xbin]
 }
 
-run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, h2){
-	temp<-init(n, nLoci, eSize, h2)
-	pop<-temp$pop
-	Ve<-temp$Ve
-	rm(temp)
+run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu){
+	pop<-init(n, nLoci, eSize, Ve, mu)
 	N<-nrow(pop)
 	mean.di<-mean(pop[,"di"])
 	X.g<-var(pop[,"X"])
 	X.max<-max(pop[,"X"])
 	for (gg in 1:initGens){
 		cat("Working through generation ", gg, "\n")
-		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k)
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu)
 		pop<-disperse(pop)
 		N<-c(N, nrow(pop))
 		mean.di<-c(mean.di, mean(pop[,"di"]))
 		X.g<-c(X.g, var(pop[,"X"]))
 		X.max<-c(X.max, max(pop[,"X"]))
 	}
-	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, Ve=Ve, pop=pop)
+	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, pop=pop)
 }
 

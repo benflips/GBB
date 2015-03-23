@@ -2,16 +2,21 @@
 
 ## Demographic and evolutionary pars
 nLoci<-20
+initFreq<-0.5
 Rmax<-5
 Nstar<-100
 n<-Nstar
-maxGDisp<-log(4)
-eSize<-maxGDisp/(2*nLoci)
+mu<-log(1) # log mean dispersal distance (at init) 
+VT<-log(1.5)^2 # Total variance in di
+h2<-0.3
+Vg<-h2*VT
+Ve<-(1-h2)*VT
+eSize<-sqrt((Vg)/((2*nLoci)*initFreq*(1-initFreq)))
 k<-0.2
 
 
 ## Experiment descriptors
-initGens<-30
+initGens<-50
 monitorGens<-50
 baseReps<-30
 bbReps<-20

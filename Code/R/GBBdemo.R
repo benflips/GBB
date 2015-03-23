@@ -11,7 +11,9 @@ temp<-run.sim(n=n,
 	Rmax=Rmax,
 	Nstar=Nstar,
 	k=k,
-	initGens=initGens)
+	initGens=initGens,
+	Ve=Ve,
+	mu=mu)
 
 plot(temp$N, type="l")
 plot(temp$mean.di, type="l")
