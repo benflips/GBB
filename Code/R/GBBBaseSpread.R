@@ -3,6 +3,14 @@ source("GBBfunctions.R")
 source("GlobalParameters.R")
 
 
+parameters<-list(n=n, 
+	nLoci=nLoci, 
+	eSize=eSize,
+	Rmax=Rmax,
+	Nstar=Nstar,
+	k=k,
+	initGens=initGens)
+
 spreadReps<-vector(mode="list", length=baseReps)
 
 for (rr in 1:baseReps){
@@ -13,15 +21,10 @@ for (rr in 1:baseReps){
 		Rmax=Rmax,
 		Nstar=Nstar,
 		k=k,
-		initGens=initGens)
+		initGens=initGens,
+		Ve=Ve,
+		mu=mu)
+	save(parameters, spreadReps, file="../../Outputs/BaseSpread.RData")
 }
 
-parameters<-list(n=n, 
-	nLoci=nLoci, 
-	eSize=eSize,
-	Rmax=Rmax,
-	Nstar=Nstar,
-	k=k,
-	initGens=initGens)
 
-save(parameters, spreadReps, file="../../Outputs/BaseSpread.RData")

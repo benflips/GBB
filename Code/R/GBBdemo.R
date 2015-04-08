@@ -5,7 +5,7 @@ source("GBBfunctions.R")
 source("GlobalParameters.R")
 
 
-temp<-run.sim(n=n, 
+system.time(temp<-run.sim(n=n, 
 	nLoci=nLoci, 
 	eSize=eSize,
 	Rmax=Rmax,
@@ -13,14 +13,7 @@ temp<-run.sim(n=n,
 	k=k,
 	initGens=initGens,
 	Ve=Ve,
-	mu=mu)
+	mu=mu))
 
-plot(temp$N, type="l")
-plot(temp$mean.di, type="l")
-plot(temp$X.g, type="l")
-plot(temp$pop[,"X"], temp$pop[,"di"])
-
-plot(tapply(temp$pop[,"di"], (temp$pop[,"X"] %/% 1), mean), type="l")
-plot(temp$pop[,"X"], dens(temp$pop))
 
 
