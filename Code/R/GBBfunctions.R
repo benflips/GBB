@@ -30,34 +30,40 @@ bevHolt<-function(N, Rmax, Nstar, a){
 
 # Generates gametes for an individual
 gametes<-function(poprow){
+	orderlist<-c(seq(1, 2*nLoci, 2), seq(2, 2*nLoci, 2))
 	gtypes<-poprow[grepl("a", names(poprow))]
 	temp<-rbinom(nLoci, 1, 0.5)
-	temp<-as.vector(rbind(temp, temp!=1))
-	gametes<-gtypes[as.logical(temp)]
+	temp<-c(temp, temp!=1)[order(orderlist)]
+	gametes<-gtypes[temp==1]
 	gametes
 }
 
-# reproduces individuals
+
+# deprecated reproduction function. Newer version is substantially faster at large N
 reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu){
-	alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
-	EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
-	W<-rpois(length(EW), EW)
-	gtype.loc<-grepl("a", colnames(pop))
-	pop2<-c()
-	for (ii in 1:nrow(pop)){
-		if (W[ii]==0) next
-		for (ww in 1:W[ii]){
-			temp<-pop[ii,]
-			tempF<-temp
-			popSet<-which((pop[,"X"] %/% 1) == (tempF["X"] %/% 1))
-			tempM<-pop[sample(popSet, 1),]
-			temp[gtype.loc]<-as.vector(rbind(gametes(tempF), gametes(tempM)))
-			pop2<-rbind(pop2, temp)
-		}
-	}
-	pop<-dPhen(pop2, eSize, Ve, nLoci, mu)
-	pop
-}
+        orderlist<-order(c(seq(1, 2*nLoci, 2), seq(2, 2*nLoci, 2)))
+        alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
+        EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
+        W<-rpois(length(EW), EW)
+        gtype.loc<-grepl("a", colnames(pop))
+       	pop2<-matrix(0, nrow=sum(W), ncol=ncol(pop), dimnames=dimnames(pop))
+       	offInd<-1
+        for (ii in 1:nrow(pop)){
+                if (W[ii]==0) next
+                for (ww in 1:W[ii]){
+                        temp<-pop[ii,]
+                        tempF<-temp
+                      	popSet<-which((pop[,"X"] %/% 1) == (tempF["X"] %/% 1))
+                        tempM<-pop[sample(popSet, 1),]
+                        temp[gtype.loc]<-c(gametes(tempF), gametes(tempM))[orderlist]
+                       	pop2[offInd,]<-temp
+                       	offInd<-offInd+1
+                }
+        }
+        pop<-dPhen(pop2, eSize, Ve, nLoci, mu)
+        pop
+ }
+
 
 # moves individuals on the lattice
 disperse<-function(pop){
