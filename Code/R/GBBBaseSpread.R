@@ -1,3 +1,4 @@
+# Runs the basic spread model and collects populations
 rm(list=ls())
 source("GBBfunctions.R")
 source("GlobalParameters.R")

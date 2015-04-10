@@ -8,7 +8,7 @@ library(aprof)
 source("GBBfunctions.R")
 source("GlobalParameters.R")
 
-initGens<-10
+initGens<-20
 
 tmp<-tempfile()
 Rprof(tmp,line.profiling=TRUE)

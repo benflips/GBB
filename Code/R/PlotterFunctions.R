@@ -1,8 +1,8 @@
 source("GBBfunctions.R")
 
 # Takes a list coming out of run.sim and plots that realisation
-plotRealisation<-function(runList, file){
-	pdf(file=file, height=18, width=9)
+plotRealisation<-function(runList, file=NULL){
+	if (!is.null(file)) pdf(file=file, height=18, width=9)
 	par(mfrow=c(2, 1), mar=c(5,5,2,2), cex.lab=1.4)
 	
 	X<-runList$pop[,"X"] %/% 3
@@ -25,7 +25,7 @@ plotRealisation<-function(runList, file){
 	
 	plot(Y~Xplot,
 		xlab=expression(Distance~from~introduction~(italic(x))),
-		ylab=expression(Mean~dispersal~phenotype~(italic(d[i]))),
+		ylab=expression(Dispersal~phenotype~(italic(d[i]))),
 		bty="l",
 		type="l",
 		ylim=range(Ypoly))
@@ -33,11 +33,11 @@ plotRealisation<-function(runList, file){
 		col=gray(0.5, 0.5) ,
 		border=NA)
 		
-	dev.off()
+	if (!is.null(file)) dev.off()
 }
 
-plotTradeOff<-function(runList, parList, file){
-	pdf(file=file)
+plotTradeOff<-function(runList, parList, file=NULL){
+	if (!is.null(file)) pdf(file=file)
 	par(mar=c(5,5,2,2), cex.lab=1.4)
 	
 	X<-seq(0, exp(parList$eSize*parList$nLoci*2), 0.1)
@@ -56,17 +56,17 @@ plotTradeOff<-function(runList, parList, file){
 		lty=1,
 		lwd=2.5)
 		
-	dev.off()
+	if (!is.null(file)) dev.off()
 }
 
 # Takes a list of run.sim lists and plots out mean and variation in results
-plotBasicReps<-function(repList, file){
+plotBasicReps<-function(repList, file=NULL){
 	pop<-c()
 	for (ii in 1:length(repList)){
 		pop<-rbind(pop, repList[[ii]]$pop)
 	}
 	
-	pdf(file=file, height=18, width=9)
+	if (!is.null(file)) pdf(file=file, height=18, width=9)
 	par(mfrow=c(2, 1), mar=c(5,5,2,2), cex.lab=1.4)
 	
 	X<-pop[,"X"] %/% 3
@@ -103,6 +103,40 @@ plotBasicReps<-function(repList, file){
 		col=gray(0.5, 0.5) ,
 		border=NA)
 		
-	dev.off()
+	if (!is.null(file)) dev.off()
 }
 
+#creates the figure comparing different barriers against core and frontal gene freqs.
+plotVarBarrs<-function(frontMat, coreMat, file=NULL, monitorGens){
+	if (!is.null(file)) pdf(file=file, height=9, width=9)
+	par(mar=c(5,5,2,2), cex.lab=1.4)
+	
+	Yf<-frontMat[,2]==monitorGens
+	Xf<-frontMat[,1]
+	fMod<-glm(Yf~Xf, family=binomial)
+	Yc<-coreMat[,2]==monitorGens
+	Xc<-coreMat[,1]
+	cMod<-glm(Yc~Xc, family=binomial)
+	X<-seq(1,monitorGens,0.2)
+	Yf<-monitorGens*predict(fMod, newdata=list("Xf"=X), type="response")
+	Yc<-monitorGens*predict(cMod, newdata=list("Xc"=X), type="response")
+	
+	plotMat<-cbind(coreMat, frontMat[,2])
+	matplot(plotMat[,1], plotMat[,2:3],
+		pch=1:2,
+		col=1:2,
+		cex=0.8,
+		bty="l",
+		xlab="Barrier Size",
+		ylab="Barrier strength (generations until breach)")
+	lines(X, Yc)
+	lines(X, Yf, col=2)
+	legend("topleft", 
+		legend=c("Core", "Front"), 
+		title="Gene Frequencies", 
+		pch=1:2,
+		col=1:2, 
+		cex=0.8)
+	
+	if (!is.null(file)) dev.off()
+}

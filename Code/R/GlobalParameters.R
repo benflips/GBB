@@ -20,5 +20,6 @@ initGens<-50
 monitorGens<-50
 baseReps<-20
 bbReps<-20
-maxBarSize<-10
+maxBarSize<-50
+minBarSize<-1
 

@@ -1,6 +1,6 @@
 # Initialises the simulation
-init<-function(n, nLoci, eSize, Ve, mu){
-	X<-runif(n, 0, 1)
+init<-function(n, nLoci, eSize, Ve, mu, maxX=1){
+	X<-runif(n, 0, maxX)
 	alleles<-matrix(rbinom(2*n*nLoci, 1, 0.5), nrow=n,
 		dimnames=list(NULL, paste("a", 1:(2*nLoci), sep="")))
 	pop<-cbind(X, alleles, di=rep(0, n))
@@ -39,14 +39,14 @@ gametes<-function(poprow){
 }
 
 
-# deprecated reproduction function. Newer version is substantially faster at large N
+# Reproduces individuals, with inheritance.
 reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu){
         orderlist<-order(c(seq(1, 2*nLoci, 2), seq(2, 2*nLoci, 2)))
         alpha<-tOff(Rmax, Nstar,pop[,"di"], k)
         EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
         W<-rpois(length(EW), EW)
         gtype.loc<-grepl("a", colnames(pop))
-       	pop2<-matrix(0, nrow=sum(W), ncol=ncol(pop), dimnames=dimnames(pop))
+       	pop2<-matrix(NA, nrow=sum(W), ncol=ncol(pop), dimnames=dimnames(pop))
        	offInd<-1
         for (ii in 1:nrow(pop)){
                 if (W[ii]==0) next
@@ -79,6 +79,7 @@ dens<-function(pop){
 	dens[Xbin]
 }
 
+# runs basic spread model
 run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu){
 	pop<-init(n, nLoci, eSize, Ve, mu)
 	N<-nrow(pop)
@@ -97,3 +98,29 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu){
 	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, pop=pop)
 }
 
+# runs the basic barrier tests, yet to be tested...
+bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSize, monitorGens){
+	#initialise
+	pop<-init(n, nLoci, eSize, Ve, mu, maxX)
+	gTypes<-rbinom(n*nLoci, 1, prob=gFreqs)
+	pop[,2:(2*nLoci+1)]<-matrix(gTypes, nrow=n, byrow=TRUE)
+	for (gg in 1:monitorGens){
+		#reproduce
+		alpha<-tOff(Rmax, Nstar,pop[,"di"], k=0)
+		EW<-bevHolt(dens(pop), Rmax, Nstar, alpha)
+		W<-rpois(length(EW), EW)
+		pop<-pop[rep(1:nrow(pop), times=W),]
+		gTypes<-rbinom(nrow(pop)*nLoci, 1, prob=gFreqs)
+		pop[,2:(2*nLoci+1)]<-matrix(gTypes, nrow=nrow(pop), byrow=TRUE)
+		pop<-dPhen(pop, eSize, Ve, nLoci, mu)	
+	
+		#disperse
+		pop<-disperse(pop)
+		burnt<-(pop[,"X"]>maxX & pop[,"X"]<(maxX+barSize))
+		pop<-pop[!burnt,]
+		
+		#test
+		if (sum(pop[,"X"]>(maxX+barSize))>5) return(gg)
+	}
+	gg
+}
