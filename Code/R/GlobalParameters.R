@@ -22,4 +22,6 @@ baseReps<-20
 bbReps<-20
 maxBarSize<-50
 minBarSize<-1
+defBar<-20
+bbMonitorGens<-100
 

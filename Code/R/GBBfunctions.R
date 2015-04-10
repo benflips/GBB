@@ -98,7 +98,7 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu){
 	list(N=N, mean.di=mean.di, X.g=X.g, X.max=X.max, pop=pop)
 }
 
-# runs the basic barrier tests, yet to be tested...
+# runs the basic barrier tests.  No evolution, genotype frequencies given.
 bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSize, monitorGens){
 	#initialise
 	pop<-init(n, nLoci, eSize, Ve, mu, maxX)
@@ -122,5 +122,35 @@ bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSi
 		#test
 		if (sum(pop[,"X"]>(maxX+barSize))>5) return(gg)
 	}
+	gg
+}
+
+# runs spread model, implements barrier and backburn, monitors
+run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar, extent, bbMonitorGens){
+	pop<-init(n, nLoci, eSize, Ve, mu)
+	for (gg in 1:initGens){
+		if (gg==1) cat("Progress\nInitGens")
+		cat(".")
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu)
+		pop<-disperse(pop)
+	}
+	currX<-max(pop[,"X"])
+	barStart<-currX+(defBar/2)
+	barFin<-currX+1.5*defBar
+	nInt<-0.2*Nstar*extent
+	int<-pop[sample(which(pop[,"X"]<extent), nInt),]
+	int[,"X"]<-runif(nInt, barStart-extent, barStart)
+	pop<-rbind(pop, int)
+	browser()
+	for (gg in 1:bbMonitorGens){
+		if (gg==1) cat("\nMoniterGens")
+		cat(".")
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu)
+		pop<-disperse(pop)
+		burnt<-(pop[,"X"]>barStart & pop[,"X"]<(barFin))
+		pop<-pop[!burnt,]
+		if (sum(pop[,"X"]>barFin)>5) {cat("\n");return(gg)}
+	}
+	cat("\n")
 	gg
 }
