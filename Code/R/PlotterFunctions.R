@@ -6,7 +6,7 @@ plotRealisation<-function(runList, file=NULL){
 	par(mfrow=c(2, 1), mar=c(5,5,2,2), cex.lab=1.4)
 	
 	X<-runList$pop[,"X"] %/% 3
-	Xplot<-as.numeric(levels(as.factor(X)))
+	Xplot<-tapply(runList$pop[,"X"], X, mean)
 	Y<-tapply(dens(runList$pop), X, mean)
 	
 	plot(Y~Xplot,
@@ -35,6 +35,30 @@ plotRealisation<-function(runList, file=NULL){
 		
 	if (!is.null(file)) dev.off()
 }
+
+# Takes a list coming out of run.sim and plots that realisation
+# Messing around with ways to communicate above in a single panel... 
+plotRealisation2<-function(runList, file=NULL, col.levels=30){
+	if (!is.null(file)) pdf(file=file, height=18, width=9)
+	par(mar=c(5,5,2,2), cex.lab=1.4)
+	
+	X<-runList$pop[,"X"] %/% 3
+	Xplot<-tapply(runList$pop[,"X"], X, mean)
+	Y<-tapply(dens(runList$pop), X, mean)
+	Y2<-tapply(runList$pop[,"di"], X, mean)
+	Y2cut<-cut(log(Y2), col.levels)
+	Y2col<-rev(heat.colors(col.levels))[as.numeric(Y2cut)]
+	
+	
+	plot(Y~Xplot,
+		xlab=expression(Distance~from~introduction~(italic(x))),
+		ylab="Mean density",
+		bty="l",
+		col=Y2col)
+	
+	if (!is.null(file)) dev.off()
+}
+
 
 plotTradeOff<-function(runList, parList, file=NULL){
 	if (!is.null(file)) pdf(file=file)
