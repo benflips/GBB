@@ -1,5 +1,5 @@
-source.dir<-""
-outdir<-""
+source.dir<-"/home/jc227089/GenBackBurn/GBB/Code/R/HPC/"
+outdir<-"/home/jc227089/GenBackBurn/Outputs"
 source(paste(sourcedir, "GBBfunctions.R", sep=""))
 source(paste(sourcedir, "GlobalParameters.R", sep=""))
 

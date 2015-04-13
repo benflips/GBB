@@ -1,14 +1,15 @@
 # HPC Script
 # examines the effectiveness of constant barrier to varying introduction extents.
 rm(list=ls())
-sourc.dir<-""
+source.dir<-"/home/jc227089/GenBackBurn/GBB/Code/R/"
+out.dir<-"/home/jc227089/GenBackBurn/Outputs"
 source(paste(source.dir, "GBBfunctions.R", sep=""))
 source(paste(source.dir, "GlobalParameters.R", sep=""))
 
 args=(commandArgs(TRUE))
 
 #evaluate the arguments
-# input argument will be Rep
+# input argument will be Rep, defBar
 for(i in 1:length(args)) {
 	 eval(parse(text=args[[i]]))
 }
@@ -48,5 +49,5 @@ for (ee in 1:length(extSeq)){
 			lead,
 			bbMonitorGens)
 		save(ext.parameters, extentMat, 
-			file=paste("../../Outputs/ExtentTests", defBar, "_", Rep, ".RData", sep=""))
+			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, ".RData", sep=""))
 }
