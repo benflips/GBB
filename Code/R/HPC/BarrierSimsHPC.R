@@ -1,7 +1,19 @@
+# HPC Script
 # examines the effectiveness of constant barrier to varying introduction extents.
 rm(list=ls())
-source("GBBfunctions.R")
-source("GlobalParameters.R")
+sourc.dir<-""
+source(paste(source.dir, "GBBfunctions.R", sep=""))
+source(paste(source.dir, "GlobalParameters.R", sep=""))
+
+args=(commandArgs(TRUE))
+
+#evaluate the arguments
+# input argument will be Rep
+for(i in 1:length(args)) {
+	 eval(parse(text=args[[i]]))
+}
+
+bbReps<-1
 
 ext.parameters<-list(n=n, 
 	nLoci=nLoci, 
@@ -22,8 +34,6 @@ extentMat<-cbind(rep(extSeq, times=rep(bbReps, length(extSeq))), breachTime=rep(
 
 for (ee in 1:length(extSeq)){
 	cat("Extent", extSeq[ee], "\n")
-	for (rr in 1:bbReps){
-		cat("\tReplicate", rr, "\n")
 		extentMat[((ee-1)*bbReps+rr),2]<-run.sim.barr(n, 
 			nLoci, 
 			eSize, 
@@ -37,9 +47,6 @@ for (ee in 1:length(extSeq)){
 			extent=extSeq[ee], 
 			lead,
 			bbMonitorGens)
-		save(ext.parameters, extentMat, file="../../Outputs/ExtentTests.RData")
-	}
-	if (sum(extentMat[extentMat[,1]==extSeq[ee],2]==bbMonitorGens)==bbReps) break
+		save(ext.parameters, extentMat, 
+			file=paste("../../Outputs/ExtentTests", defBar, "_", Rep, ".RData", sep=""))
 }
-
-#save(ext.parameters, extentMat, file="../../Outputs/ExtentTests.RData")

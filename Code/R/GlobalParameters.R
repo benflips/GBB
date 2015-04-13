@@ -16,12 +16,13 @@ k<-0.2
 
 
 ## Experiment descriptors
-initGens<-50
-monitorGens<-50
-baseReps<-20
-bbReps<-20
+initGens<-50 #initial spread generations
+monitorGens<-50 # monitoring generations for BarrierStep
+baseReps<-20 # basic number of replicates of each simulation
+bbReps<-20 # replicates of backburn simulations
 maxBarSize<-50
 minBarSize<-1
-defBar<-20
-bbMonitorGens<-100
+defBar<-20 # barrier size for constant barrier sims
+lead<-10 # how far in front of population you set up the barrier/burn
+bbMonitorGens<-50 # monitor generations for backburn sims
 

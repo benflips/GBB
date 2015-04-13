@@ -126,7 +126,7 @@ bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSi
 }
 
 # runs spread model, implements barrier and backburn, monitors
-run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar, extent, bbMonitorGens){
+run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar, extent, lead, bbMonitorGens){
 	pop<-init(n, nLoci, eSize, Ve, mu)
 	for (gg in 1:initGens){
 		if (gg==1) cat("Progress\nInitGens")
@@ -135,13 +135,12 @@ run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar
 		pop<-disperse(pop)
 	}
 	currX<-max(pop[,"X"])
-	barStart<-currX+(defBar/2)
-	barFin<-currX+1.5*defBar
+	barStart<-currX+lead
+	barFin<-currX+lead+defBar
 	nInt<-0.2*Nstar*extent
 	int<-pop[sample(which(pop[,"X"]<extent), nInt),]
 	int[,"X"]<-runif(nInt, barStart-extent, barStart)
 	pop<-rbind(pop, int)
-	browser()
 	for (gg in 1:bbMonitorGens){
 		if (gg==1) cat("\nMoniterGens")
 		cat(".")
