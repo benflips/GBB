@@ -22,6 +22,6 @@ for (bb in dBar){
 		close(zz)
 		
 		#submit the job
-		system(paste('qsub -l nodes=1:ppn=1 -l pmem=1gb -l walltime=24:00:00 ', paste(fname, fid,".sh",sep=""),sep=""))
+		system(paste('qsub -l nodes=1:ppn=1 -l pmem=1gb -l walltime=36:00:00 ', paste(fname, fid,".sh",sep=""),sep=""))
 	}
 }
