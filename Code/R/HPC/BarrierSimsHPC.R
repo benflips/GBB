@@ -35,7 +35,7 @@ extentMat<-cbind(rep(extSeq, times=rep(bbReps, length(extSeq))), breachTime=rep(
 
 for (ee in 1:length(extSeq)){
 	cat("Extent", extSeq[ee], "\n")
-		extentMat[((ee-1)*bbReps+rr),2]<-run.sim.barr(n, 
+		extentMat[ee,2]<-run.sim.barr(n, 
 			nLoci, 
 			eSize, 
 			Rmax, 
