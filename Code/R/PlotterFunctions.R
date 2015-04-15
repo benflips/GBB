@@ -130,6 +130,25 @@ plotBasicReps<-function(repList, file=NULL){
 	if (!is.null(file)) dev.off()
 }
 
+plotKernels<-function(poptail, popfront, file=NULL){
+	dtail<-density(poptail[,"meanD"])
+	dfront<-density(popfront[,"meanD"])
+	if (!is.null(file)) pdf(file=file, height=9, width=9)
+		par(mar=c(5,5,2,2), cex.lab=1.4)
+		plot(c(dtail$x, dfront$x), c(dtail$y, dfront$y), 
+			type="n",
+			xlab="Mean dispersal distance",
+			ylab="Probability density",
+			bty="l")
+		lines(dtail, lty=1)
+		lines(dfront, lty=2)
+		legend('topright', 
+			legend=c("Range core", "Expanding front"), 
+			lty=1:2,
+			bty="n")
+	if (!is.null(file)) dev.off()
+}
+
 #creates the figure comparing different barriers against core and frontal gene freqs.
 plotVarBarrs<-function(frontMat, coreMat, file=NULL, monitorGens){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
@@ -162,5 +181,36 @@ plotVarBarrs<-function(frontMat, coreMat, file=NULL, monitorGens){
 		col=1:2, 
 		cex=0.8)
 	
+	if (!is.null(file)) dev.off()
+}
+
+plotBarSims<-function(bsm, file=NULL){
+	if (!is.null(file)) pdf(file=file, height=9, width=9)
+	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
+	colvec<-1:length(blev)
+	pchvec<-1:length(blev)
+	par(mar=c(5,5,2,2), cex.lab=1.4)
+	plot(bsm[,"extent"], bsm[,"breachTime"]/50,
+		type="n",
+		bty="l",
+		xlab="Backburn extent",
+		ylab="Probability of barrier success")
+	X<-unique(bsm[,"extent"])
+	for (bb in 1:length(blev)){
+		temp<-bsm[bsm[,"defBar"]==blev[bb],]
+		Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
+		points(X, Y, 
+			col=bb,
+			pch=bb)
+		lines(X, Y, 
+			col=bb,
+			pch=bb)
+	}
+	legend('right', 
+		pch=pchvec,
+		col=colvec,
+		legend=blev,
+		title="Barrier width",
+		bty="n")
 	if (!is.null(file)) dev.off()
 }
