@@ -2,6 +2,10 @@
 rm(list=ls())
 source("GBBfunctions.R")
 source("GlobalParameters.R")
+load(file="../../Outputs/BaseSpreadSummary.RData")
+
+lead<-5
+maxX<-30
 
 parameters<-list(n=n, 
 	nLoci=nLoci, 
@@ -9,9 +13,14 @@ parameters<-list(n=n,
 	Rmax=Rmax,
 	Nstar=Nstar,
 	k=k,
-	initGens=initGens)
+	Ve=Ve,
+	mu=mu,
+	maxX=maxX,
+	lead=lead,
+	initGens=initGens,
+	monitorGens=monitorGens)
 	
-load(file="../../Outputs/BaseSpreadSummary.RData")
+
 
 barSeq<-minBarSize:maxBarSize
 
@@ -25,7 +34,7 @@ for (bb in 1:length(barSeq)){
 	cat("Working through barrier", bb, "of", length(barSeq), "...\n")
 	for (rr in 1:baseReps){
 	cat("Replicate", rr, "\n")
-		frontMat[((bb-1)*baseReps+rr),2]<-bar.test.sim(n*10, 
+		frontMat[((bb-1)*baseReps+rr),2]<-bar.test.sim(n*maxX, 
 			nLoci, 
 			eSize, 
 			Rmax, 
@@ -33,8 +42,9 @@ for (bb in 1:length(barSeq)){
 			Ve, 
 			mu, 
 			gFreqs=frontFreqs, 
-			maxX=10, 
-			barSize=barSeq[bb], 
+			maxX=maxX, 
+			barSize=barSeq[bb],
+			lead=lead, 
 			monitorGens)
 	}
 }
@@ -49,7 +59,7 @@ for (bb in 1:length(barSeq)){
 	cat("Working through barrier", bb, "of", length(barSeq), "...\n")
 	for (rr in 1:baseReps){
 	cat("Replicate", rr, "\n")
-		coreMat[((bb-1)*baseReps+rr),2]<-bar.test.sim(n*10, 
+		coreMat[((bb-1)*baseReps+rr),2]<-bar.test.sim(n*maxX, 
 			nLoci, 
 			eSize, 
 			Rmax, 
@@ -57,10 +67,11 @@ for (bb in 1:length(barSeq)){
 			Ve, 
 			mu, 
 			gFreqs=coreFreqs, 
-			maxX=10, 
-			barSize=barSeq[bb], 
+			maxX=maxX, 
+			barSize=barSeq[bb],
+			lead=lead, 
 			monitorGens)
 	}
 }
 
-save(frontMat, coreMat, file="../../Outputs/BarrierTests.RData")
+save(parameters, frontMat, coreMat, file="../../Outputs/BarrierTests.RData")

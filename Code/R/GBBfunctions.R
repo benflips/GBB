@@ -99,7 +99,7 @@ run.sim<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu){
 }
 
 # runs the basic barrier tests.  No evolution, genotype frequencies given.
-bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSize, monitorGens){
+bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSize, lead, monitorGens){
 	#initialise
 	pop<-init(n, nLoci, eSize, Ve, mu, maxX)
 	gTypes<-rbinom(n*nLoci, 1, prob=gFreqs)
@@ -116,7 +116,7 @@ bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSi
 	
 		#disperse
 		pop<-disperse(pop)
-		burnt<-(pop[,"X"]>maxX & pop[,"X"]<(maxX+barSize))
+		burnt<-(pop[,"X"]>(maxX+lead) & pop[,"X"]<(maxX+lead+barSize))
 		pop<-pop[!burnt,]
 		
 		#test
