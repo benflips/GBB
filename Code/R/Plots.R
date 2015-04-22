@@ -19,7 +19,7 @@ plotKernels(poptail, popfront, file="../../Figures/DispersalPhenotypes.pdf")
 
 load("../../Outputs/BarrierTests.RData")
 
-plotVarBarrs(frontMat, coreMat, file="../../Figures/VarBarrs.pdf", monitorGens)
+plotVarBarrs(frontMat, coreMat, frontMatEvol, coreMatEvol, file="../../Figures/VarBarrs.pdf", monitorGens)
 
 load("../../Outputs/barSimsMat.RData")
 

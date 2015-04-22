@@ -150,19 +150,27 @@ plotKernels<-function(poptail, popfront, file=NULL){
 }
 
 #creates the figure comparing different barriers against core and frontal gene freqs.
-plotVarBarrs<-function(frontMat, coreMat, file=NULL, monitorGens){
-	if (!is.null(file)) pdf(file=file, height=9, width=9)
-	par(mar=c(5,5,2,2), cex.lab=1.4)
+plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, monitorGens){
+	if (!is.null(file)) pdf(file=file, height=18, width=9)
+	par(mfrow=c(2,1), mar=c(5,5,2,2), cex.lab=1.4)
 	
 	Yf<-frontMat[,2]==monitorGens
 	Xf<-frontMat[,1]
 	fMod<-glm(Yf~Xf, family=binomial)
+	Yf.e<-frontMatEvol[,2]==monitorGens
+	Xf.e<-frontMatEvol[,1]
+	fMod.e<-glm(Yf.e~Xf.e, family=binomial)
 	Yc<-coreMat[,2]==monitorGens
 	Xc<-coreMat[,1]
 	cMod<-glm(Yc~Xc, family=binomial)
+	Yc.e<-coreMatEvol[,2]==monitorGens
+	Xc.e<-coreMatEvol[,1]
+	cMod.e<-glm(Yc.e~Xc.e, family=binomial)
 	X<-seq(1,monitorGens,0.2)
 	Yf<-monitorGens*predict(fMod, newdata=list("Xf"=X), type="response")
 	Yc<-monitorGens*predict(cMod, newdata=list("Xc"=X), type="response")
+	Yf.e<-monitorGens*predict(fMod.e, newdata=list("Xf.e"=X), type="response")
+	Yc.e<-monitorGens*predict(cMod.e, newdata=list("Xc.e"=X), type="response")
 	
 	plotMat<-cbind(coreMat, frontMat[,2])
 	matplot(plotMat[,1], plotMat[,2:3],
@@ -170,16 +178,37 @@ plotVarBarrs<-function(frontMat, coreMat, file=NULL, monitorGens){
 		col=1:2,
 		cex=0.8,
 		bty="l",
-		xlab="Barrier Size",
+		xlab="",
 		ylab="Barrier strength (generations until breach)")
 	lines(X, Yc)
 	lines(X, Yf, col=2)
-	legend("topleft", 
+	text(2, 50, labels="A)", cex=1.5)
+	legend(0, 45, 
 		legend=c("Core", "Front"), 
-		title="Gene Frequencies", 
+		title="Gene Frequencies\n(no evolution)", 
 		pch=1:2,
 		col=1:2, 
-		cex=0.8)
+		cex=0.8,
+		bty="n")
+		
+	plotMat<-cbind(coreMatEvol, frontMatEvol[,2])
+	matplot(plotMat[,1], plotMat[,2:3],
+		pch=1:2,
+		col=1:2,
+		cex=0.8,
+		bty="l",
+		xlab="Barrier Size",
+		ylab="Barrier strength (generations until breach)")
+	lines(X, Yc.e)
+	lines(X, Yf.e, col=2)
+	text(2, 50, labels="B)", cex=1.5)
+	legend(0, 45, 
+		legend=c("Core", "Front"), 
+		title="Gene Frequencies\n(with evolution)", 
+		pch=1:2,
+		col=1:2, 
+		cex=0.8,
+		bty="n")
 	
 	if (!is.null(file)) dev.off()
 }

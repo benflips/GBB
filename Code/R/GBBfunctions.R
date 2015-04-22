@@ -125,6 +125,26 @@ bar.test.sim<-function(n, nLoci, eSize, Rmax, Nstar, Ve, mu, gFreqs, maxX, barSi
 	gg
 }
 
+# runs the basic barrier tests.  With evolution, initial genotype frequencies given.
+bar.test.sim.evol<-function(n, nLoci, eSize, Rmax, Nstar, k, Ve, mu, gFreqs, maxX, barSize, lead, monitorGens){
+	#initialise
+	pop<-init(n, nLoci, eSize, Ve, mu, maxX)
+	gTypes<-rbinom(n*nLoci, 1, prob=gFreqs)
+	pop[,2:(2*nLoci+1)]<-matrix(gTypes, nrow=n, byrow=TRUE)
+	for (gg in 1:monitorGens){
+		#reproduce
+		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu)	
+		#disperse
+		pop<-disperse(pop)
+		burnt<-(pop[,"X"]>(maxX+lead) & pop[,"X"]<(maxX+lead+barSize))
+		pop<-pop[!burnt,]
+		
+		#test
+		if (sum(pop[,"X"]>(maxX+barSize))>5) return(gg)
+	}
+	gg
+}
+
 # runs spread model, implements barrier and backburn, monitors
 run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar, extent, lead, bbMonitorGens){
 	pop<-init(n, nLoci, eSize, Ve, mu)
