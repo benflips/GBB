@@ -11,6 +11,8 @@ plotTradeOff(runList=spreadReps[[1]],
 # Plot of a single realisation of spread.
 plotRealisation(runList=spreadReps[[1]], file="../../Figures/Realisation.pdf")
 
+plotRealisation2(runList=spreadReps[[1]], file="../../Figures/Realisation2.pdf")
+
 plotBasicReps(spreadReps, file="../../Figures/BasicReps.pdf")
 
 source("GBBBaseSpreadStats.R")

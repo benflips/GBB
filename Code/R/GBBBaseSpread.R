@@ -25,7 +25,7 @@ for (rr in 1:baseReps){
 		initGens=initGens,
 		Ve=Ve,
 		mu=mu)
-	save(parameters, spreadReps, file="../../Outputs/BaseSpread.RData")
+	save(parameters, spreadReps, file="C:\\Users\\606CM-92353\\Desktop\\R\\BaseSpread.RData")
 }
 
 

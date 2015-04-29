@@ -16,9 +16,9 @@ k<-0.2
 
 
 ## Experiment descriptors
-initGens<-50 #initial spread generations
+initGens<-10 #initial spread generations
 monitorGens<-50 # monitoring generations for BarrierStep
-baseReps<-20 # basic number of replicates of each simulation
+baseReps<-2 # basic number of replicates of each simulation
 bbReps<-20 # replicates of backburn simulations
 maxBarSize<-50
 minBarSize<-1

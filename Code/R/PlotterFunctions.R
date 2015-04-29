@@ -39,7 +39,7 @@ plotRealisation<-function(runList, file=NULL){
 # Takes a list coming out of run.sim and plots that realisation
 # Messing around with ways to communicate above in a single panel... 
 plotRealisation2<-function(runList, file=NULL, col.levels=30){
-	if (!is.null(file)) pdf(file=file, height=18, width=9)
+	if (!is.null(file)) pdf(file=file, height=9, width=18)
 	par(mar=c(5,5,2,2), cex.lab=1.4)
 	
 	X<-runList$pop[,"X"] %/% 3
@@ -50,11 +50,13 @@ plotRealisation2<-function(runList, file=NULL, col.levels=30){
 	Y2col<-rev(heat.colors(col.levels))[as.numeric(Y2cut)]
 	
 	
-	plot(Y~Xplot,
+	barplot(height=Y,
 		xlab=expression(Distance~from~introduction~(italic(x))),
 		ylab="Mean density",
 		bty="l",
-		col=Y2col)
+		col=Y2col,
+		border=NA,
+		space=0 )
 	
 	if (!is.null(file)) dev.off()
 }
@@ -173,7 +175,7 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 	Yc.e<-monitorGens*predict(cMod.e, newdata=list("Xc.e"=X), type="response")
 	
 	plotMat<-cbind(coreMat, frontMat[,2])
-	matplot(plotMat[,1], plotMat[,2:3],
+	sunflowerplot(plotMat[,1], plotMat[,2:3],
 		pch=1:2,
 		col=1:2,
 		cex=0.8,
@@ -192,7 +194,7 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 		bty="n")
 		
 	plotMat<-cbind(coreMatEvol, frontMatEvol[,2])
-	matplot(plotMat[,1], plotMat[,2:3],
+	sunflowerplot(plotMat[,1], plotMat[,2:3],
 		pch=1:2,
 		col=1:2,
 		cex=0.8,
