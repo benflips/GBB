@@ -40,6 +40,7 @@ plotRealisation<-function(runList, file=NULL){
 
 # Takes a list coming out of run.sim and plots that realisation
 # Modified by RT 05/05/15 to have pretty x axis and color ramp
+# Modified further by Ben
 plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
   if (!is.null(file)) pdf(file=file, height=9, width=18)
   par(mar=c(5,5,2,2), cex.lab=1.4)
@@ -48,7 +49,11 @@ plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
   Xplot<-tapply(runList$pop[,"X"], X, mean)
   Y<-tapply(dens(runList$pop), X, mean)
   Y2<-(tapply(runList$pop[,"di"], X, mean))
-  Y2cut<-cut((Y2), col.levels)
+  #bpoints<-seq(min(Y2), max(Y2), length.out=31)
+  #bpoints[31]<-5
+  bpoints<-seq(0, 1, length.out=31)
+  bpoints<-quantile(Y2, probs=bpoints)
+  Y2cut<-cut((Y2), col.levels, breaks=bpoints, labels=FALSE)
   Y2colRamp<-colorRampPalette(rev(heat.colors(col.levels))) 
   Y2col<-Y2colRamp(col.levels)
   
@@ -61,9 +66,9 @@ plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
               border=NA,
               space=0 )
   axis(1,at=round(bp)[ round(bp) %% 10 == 0 ])
-  image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(min((Y2)),max((Y2))),
+  image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(0, 100),
              horizontal=T,col= Y2col,legend.line = -2.5,legend.shrink=0.1,
-             legend.lab=expression(Mean~dispersal~phenotype~(italic(d[i])))) 
+             legend.lab=expression(Dispersal~phenotype~quantile)) 
 
                 
   if (!is.null(file)) dev.off()
@@ -90,20 +95,28 @@ plotGBB<-function(timeList, ints, file=NULL, col.levels=30){
 		Y2cut<-cut((Y2), col.levels, breaks=bpoints, labels=FALSE)
   		
   		xl<-switch((ii==length(ints))+1, "", expression(Distance~from~introduction~(italic(x))))
-		  bp<-barplot(height=Y,
-					  xaxt="n",
-					  xlab=xl,
-					  ylab="Mean density",
-					  bty="l",
-					  col=Y2col[as.numeric(Y2cut)],
-					  border=NA,
-					  space=0)
+		bp<-barplot(height=Y,
+		  xaxt="n",
+		  xlab=xl,
+		  ylab="Mean density",
+		  bty="l",
+		  col=Y2col[as.numeric(Y2cut)],
+		  border=NA,
+		  space=0,
+		  xlim=c(0, (max(Xplot)+30)/3))
+		polygon(x=c(max(bp), rep(max(bp)+5, 2), max(bp)),
+			y=c(0,0,10,10),
+			col=1, 
+			border=NA)
 		text(bp[30], 50, labels=paste("Generation ", 50+ints[ii]), cex=5)	
-		  if (ii==length(ints)) axis(1,at=round(bp)[ round(bp) %% 10 == 0 ])
-		  
-		  if (ii==1) image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(min((Y2)),max((Y2))),
-					 horizontal=T,col= Y2col,legend.line = -2.5,legend.shrink=0.1,
-					 legend.lab=expression(Mean~dispersal~phenotype~(italic(d[i]))))
+		if (ii==length(ints)) {
+			bp<-c(bp, max(bp+10))
+			axis(1,at=round(bp)[ round(bp) %% 10 == 0 ],
+				labels=round(bp)[ round(bp) %% 10 == 0 ]*3)
+		}
+		if (ii==1) image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(min((Y2)),max((Y2))),
+			horizontal=T,col= Y2col,legend.line = -2.5,legend.shrink=0.1,
+			legend.lab=expression(Mean~dispersal~phenotype~(italic(d[i]))))
 	}
 	
 	if (!is.null(file)) dev.off() 
