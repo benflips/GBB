@@ -20,7 +20,7 @@ for (bb in dBar){
 			cat('cd $PBS_O_WORKDIR\n',file=zz)
 			cat('source /etc/profile.d/modules.sh\n',file=zz) ### Runs an .sh file which allows modules to be loaded
 			cat('module load R\n', file=zz)
-			cat("R CMD BATCH --no-save --no-restore '--args Rep=",ii, " defBar=", bb, "k=", kk, "' ", sep="", file=zz)
+			cat("R CMD BATCH --no-save --no-restore '--args Rep=",ii, " defBar=", bb, " k=", kk, "' ", sep="", file=zz)
 			cat(script.file, " ", paste(fname, fid,'.Rout',sep=''), "\n", sep="",file=zz)
 			cat('##################################\n',file=zz)
 			close(zz)
