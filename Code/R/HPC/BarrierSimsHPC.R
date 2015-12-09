@@ -9,7 +9,7 @@ source(paste(source.dir, "GlobalParameters.R", sep=""))
 args=(commandArgs(TRUE))
 
 #evaluate the arguments
-# input argument will be Rep, defBar
+# input argument will be Rep, defBar, k
 for(i in 1:length(args)) {
 	 eval(parse(text=args[[i]]))
 }
@@ -49,5 +49,5 @@ for (ee in 1:length(extSeq)){
 			lead,
 			bbMonitorGens)
 		save(ext.parameters, extentMat, 
-			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, ".RData", sep=""))
+			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, "_k", k*10, ".RData", sep=""))
 }

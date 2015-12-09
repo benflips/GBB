@@ -176,3 +176,11 @@ run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar
 	cat("\n")
 	gg
 }
+
+# generates quartiles of the non-standardised t-distribution
+qnst <-function(p,sigma,v){sigma*qt(p,df=v)}
+
+# generates random draws from non-standardised t-distribution
+rtnst<-function(n, sigma, v){
+	
+}
