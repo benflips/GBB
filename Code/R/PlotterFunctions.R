@@ -280,6 +280,7 @@ plotBarSims<-function(bsm, file=NULL){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
 	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
 	klev<-as.numeric(levels(as.factor(bsm[,"k"])))
+	klev<-klev[1:3] # plot was too messy with all four levels
 	colvec<-1:length(blev)
 	pchvec<-1:length(blev)
 	lwdvec<-1:length(klev)
@@ -305,11 +306,17 @@ plotBarSims<-function(bsm, file=NULL){
 				lwd=kk)
 		}
 	}
-	legend('right', 
+	legend(x=0, y=1.04, 
 		pch=pchvec,
 		col=colvec,
 		legend=blev,
 		title="Barrier width",
+		bty="n")
+	legend(x=-0.25, y=0.92, 
+		lwd=lwdvec,
+		col=1,
+		legend=klev,
+		title="Trade-off Strength (k)",
 		bty="n")
 	if (!is.null(file)) dev.off()
 }
