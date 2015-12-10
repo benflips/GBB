@@ -279,8 +279,10 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 plotBarSims<-function(bsm, file=NULL){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
 	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
+	klev<-as.numeric(levels(as.factor(bsm[,"k"])))
 	colvec<-1:length(blev)
 	pchvec<-1:length(blev)
+	lwdvec<-1:length(klev)
 	par(mar=c(5,5,2,2), cex.lab=1.4)
 	plot(bsm[,"extent"], bsm[,"breachTime"]/50,
 		type="n",
@@ -289,14 +291,19 @@ plotBarSims<-function(bsm, file=NULL){
 		ylab="Probability of barrier success")
 	X<-unique(bsm[,"extent"])
 	for (bb in 1:length(blev)){
-		temp<-bsm[bsm[,"defBar"]==blev[bb],]
-		Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
-		points(X, Y, 
-			col=bb,
-			pch=bb)
-		lines(X, Y, 
-			col=bb,
-			pch=bb)
+		cat("bb=",bb,"\n")
+		for (kk in 1:length(klev)){
+		cat("  kk=",kk, "\n")
+			temp<-bsm[(bsm[,"defBar"]==blev[bb] & bsm[,"k"]==klev[kk]),]
+			Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
+			points(X, Y, 
+				col=bb,
+				pch=bb)
+			lines(X, Y, 
+				col=bb,
+				pch=bb,
+				lwd=kk)
+		}
 	}
 	legend('right', 
 		pch=pchvec,

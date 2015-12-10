@@ -165,7 +165,7 @@ run.sim.barr<-function(n, nLoci, eSize, Rmax, Nstar, k, initGens, Ve, mu, defBar
 	for (gg in 1:bbMonitorGens){
 		if (gg==1) cat("\nMoniterGens")
 		cat(".")
-		pop.out[[gg]]<-pop
+		if (!is.null(save.out)) pop.out[[gg]]<-pop
 		pop<-reproduce(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu)
 		pop<-disperse(pop)
 		burnt<-(pop[,"X"]>barStart & pop[,"X"]<(barFin))

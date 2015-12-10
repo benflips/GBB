@@ -1,7 +1,7 @@
 # walks through parameter combinations and submits jobs to HPC nodes
 
 setwd("/scratch/jc227089/PBSfiles/")
-
+system("rm /scratch/jc227089/PBSfiles/*.*")
 
 Rep<-1:20
 dBar<-c(10, 15, 20)

@@ -47,8 +47,7 @@ for (ee in 1:length(extSeq)){
 			defBar, 
 			extent=extSeq[ee], 
 			lead,
-			bbMonitorGens,
-			save.out=TRUE)
+			bbMonitorGens)
 		save(ext.parameters, extentMat, 
 			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, "_k", k*10, ".RData", sep=""))
 }
