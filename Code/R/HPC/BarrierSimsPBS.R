@@ -5,22 +5,22 @@ system("rm /scratch/jc227089/PBSfiles/*.*")
 
 Rep<-1:20
 dBar<-c(10, 15, 20)
-kval<-c(0, 0.1, 0.4)
+vval<-c(10, 7, 6) #values of v corresponding to exc kurtosis 1, 2 and 3
 
 script.file<-"/home/jc227089/GenBackBurn/GBB/Code/R/HPC/BarrierSimsHPC.R"
 fname<-"GBBBarSim"
 
 for (bb in dBar){
 	for (ii in Rep) {
-		for (kk in kval){
-			fid<-paste(bb, "k", kk*10, "rep", ii, sep="")
+		for (vv in vval){
+			fid<-paste(bb, "v", vv, "rep", ii, sep="")
 			##create the sh file
 			zz = file(paste(fname, fid,'.sh',sep=''),'w')
 			cat('##################################\n',file=zz)
 			cat('cd $PBS_O_WORKDIR\n',file=zz)
 			cat('source /etc/profile.d/modules.sh\n',file=zz) ### Runs an .sh file which allows modules to be loaded
 			cat('module load R\n', file=zz)
-			cat("R CMD BATCH --no-save --no-restore '--args Rep=",ii, " defBar=", bb, " k=", kk, "' ", sep="", file=zz)
+			cat("R CMD BATCH --no-save --no-restore '--args Rep=",ii, " defBar=", bb, " v=", vv, "' ", sep="", file=zz)
 			cat(script.file, " ", paste(fname, fid,'.Rout',sep=''), "\n", sep="",file=zz)
 			cat('##################################\n',file=zz)
 			close(zz)

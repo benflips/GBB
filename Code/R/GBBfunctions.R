@@ -66,8 +66,17 @@ reproduce<-function(pop, Rmax, Nstar, nLoci, eSize, Ve, k, mu){
 
 
 # moves individuals on the lattice
-disperse<-function(pop){
-	pop[,"X"]<-rnorm(nrow(pop), mean=pop[,"X"], sd=exp(pop[,"di"]))
+
+# Gaussian dispersal
+#disperse<-function(pop){
+#	pop[,"X"]<-rnorm(nrow(pop), mean=pop[,"X"], sd=exp(pop[,"di"]))
+#	pop[,"X"]<-ifelse(pop[,"X"]<0, -pop[,"X"], pop[,"X"])
+#	pop
+#}
+
+# non std t dispersal (default Gaussian)
+disperse<-function(pop, v=Inf){
+	pop[,"X"]<-pop[,"X"]+rtnst(nrow(pop), sigma=exp(pop[,"di"]), v)
 	pop[,"X"]<-ifelse(pop[,"X"]<0, -pop[,"X"], pop[,"X"])
 	pop
 }
@@ -182,5 +191,6 @@ qnst <-function(p,sigma,v){sigma*qt(p,df=v)}
 
 # generates random draws from non-standardised t-distribution
 rtnst<-function(n, sigma, v){
-	
+	rns<-runif(n)
+	qnst(rns, sigma, v)
 }
