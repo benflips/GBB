@@ -33,4 +33,8 @@ load("../../Outputs/Demo_Staged.RData")
 
 plotGBB(pop.out, ints=c(1, 5, 20), file="../../Figures/GBB_staged.pdf")
 
+load("../../Outputs/barSimsMatVarv.RData")
+
+plotBarSimsVarv(barSimsMatVarv, file="../../Figures/BarSimsVarv.pdf")
+
 

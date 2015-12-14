@@ -320,3 +320,47 @@ plotBarSims<-function(bsm, file=NULL){
 		bty="n")
 	if (!is.null(file)) dev.off()
 }
+
+plotBarSimsVarv<-function(bsm, file=NULL){
+	if (!is.null(file)) pdf(file=file, height=9, width=9)
+	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
+	vlev<-as.numeric(levels(as.factor(bsm[,"v"])))
+	colvec<-1:length(blev)
+	pchvec<-1:length(blev)
+	lwdvec<-1:length(vlev)
+	par(mar=c(5,5,2,2), cex.lab=1.4)
+	plot(bsm[,"extent"], bsm[,"breachTime"]/50,
+		type="n",
+		bty="l",
+		xlab="Backburn extent",
+		ylab="Probability of barrier success")
+	X<-unique(bsm[,"extent"])
+	for (bb in 1:length(blev)){
+		cat("bb=",bb,"\n")
+		for (vv in 1:length(vlev)){
+		cat("  vv=",vv, "\n")
+			temp<-bsm[(bsm[,"defBar"]==blev[bb] & bsm[,"v"]==vlev[vv]),]
+			Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
+			points(X, Y, 
+				col=bb,
+				pch=bb)
+			lines(X, Y, 
+				col=bb,
+				pch=bb,
+				lwd=vv)
+		}
+	}
+	legend(x=0, y=1.04, 
+		pch=pchvec,
+		col=colvec,
+		legend=blev,
+		title="Barrier width",
+		bty="n")
+	legend(x=-0.25, y=0.92, 
+		lwd=lwdvec,
+		col=1,
+		legend=6/(vlev-4),
+		title="Excess kurtosis",
+		bty="n")
+	if (!is.null(file)) dev.off()
+}
