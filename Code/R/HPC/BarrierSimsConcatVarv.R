@@ -1,7 +1,9 @@
 flist<-list.files("../../../../Outputs/", pattern="ExtentTests", full.names=T)
 
 vVec<-substr(flist, regexpr("v", flist)+1, regexpr("v", flist)+1)
+vVec<-ifelse(vVec=="I", "Inf", vVec)
 vVec<-as.numeric(ifelse(vVec=="1", "10", vVec))
+
 load(flist[1])
 nr<-nrow(extentMat)
 barSimsMat<-matrix(nrow=length(flist)*nr, ncol=4)

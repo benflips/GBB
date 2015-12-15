@@ -324,7 +324,8 @@ plotBarSims<-function(bsm, file=NULL){
 plotBarSimsVarv<-function(bsm, file=NULL){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
 	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
-	vlev<-as.numeric(levels(as.factor(bsm[,"v"])))
+	blev<-blev[c(2,5)] # too much otherwise
+	vlev<-rev(as.numeric(levels(as.factor(bsm[,"v"]))))
 	colvec<-1:length(blev)
 	pchvec<-1:length(blev)
 	lwdvec<-1:length(vlev)

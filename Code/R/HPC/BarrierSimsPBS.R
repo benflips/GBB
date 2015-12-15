@@ -4,8 +4,8 @@ setwd("/scratch/jc227089/PBSfiles/")
 system("rm /scratch/jc227089/PBSfiles/*.*")
 
 Rep<-1:20
-dBar<-c(10, 15, 20)
-vval<-c(10, 7, 6) #values of v corresponding to exc kurtosis 1, 2 and 3
+dBar<-c(25, 30, 35)
+vval<-Inf #values of v corresponding to exc kurtosis
 
 script.file<-"/home/jc227089/GenBackBurn/GBB/Code/R/HPC/BarrierSimsHPC.R"
 fname<-"GBBBarSim"
