@@ -65,7 +65,7 @@ Species ranges are shifting at an unprecedented rate in response to global chang
 
 These predictions regarding the evolution of range expansion phenotypes have important implications for managing the spread of invasive species.  The impact of any particular invader typically scales with the size of the area it comes to inhabit \citep{Epanchin-Niell_Hastings_2010}.  Thus, once an invasion is underway, our best strategy will often be containment; to slow or limit the extent of spread \citep{Sharov_1998}.  Unfortunately, localised control efforts aimed at stopping spread are rarely cost-efficient because they are typically directed at low-density populations: detection and reward-for-effort are low. A powerful alternative is to exploit natural landscape barriers that impede spread. Islands, for example, commonly offer refuge from invasive species, at almost no cost to managers.  Islands, however, are typically small, so a focus on ``mainland'' barriers can potentially prevent a much larger area from being colonised.  Barrier zones were used to temporarily halt, and successfully slow, the spread of the gypsy moth in the US \citep{Sharov_Liebhold_1998}, and potentially have application wherever abiotic conditions narrow the available habitat down to ``linear'' corridors.  Examples include invasions along streams and rivers \citep[e.g.,][]{Kerby_Riley_Kats_Wilson_2005}, along coastlines \citep[e.g.,][]{Cousens_Cousens_2011}, and other distributional choke-points \citep[e.g.,][]{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}.
 
-Rapid evolution can influence the effectiveness of barrier zones in two ways. First, increased dispersal rates of the vanguard may render barriers more easily surmountable: for any given barrier zone width, individuals from invasion-front populations are more likely to cross that barrier than are conspecifics from core populations \citep{Travis_Smith_Ranwala_2010}. Second, once a barrier is reached, natural selection and spatial sorting rapidly favour individuals of lower dispersal ability, driving dispersal rates downwards again \citep{Kubisch_Hovestadt_Poethke_2010, Phillips_2012}.  Thus, any barrier that is initially effective may become more effective as time passes because the population abutting the barrier will evolve lower rates of dispersal.  Finally, by exploiting the emergent differences in dispersal and competition abilities of core vs frontal populations, managers can potentially make barriers more effective through translocation: setting up a genetic backburn that prevents invasion front phenotypes ever encountering the barrier. 
+Rapid evolution can influence the effectiveness of barrier zones in two ways. First, increased dispersal rates of the vanguard may render barriers more easily surmountable: for any given barrier zone width, individuals from invasion-front populations are more likely to cross that barrier than are conspecifics from core populations \citep{Travis_Smith_Ranwala_2010}. Second, once a barrier is reached, natural selection and spatial sorting rapidly favour individuals of lower dispersal ability, driving dispersal rates downwards again \citep{Kubisch_Hovestadt_Poethke_2010, Phillips_2012}.  Thus, any barrier that is initially effective may become more effective as time passes because the population abutting the barrier will evolve lower rates of dispersal.  Finally, by exploiting the emergent differences in dispersal and competition abilities of core vs frontal populations, managers can potentially make barriers more effective through translocation: by translocating the less dispersive phenotypes of the range core to the near side of the barrier -- setting up a genetic backburn -- it may be possible to prevent invasion front phenotypes ever encountering the barrier. 
 
 Our interest in these issues was stimulated by the spread of invasive cane toads (\emph{Rhinella marina}) through the Australian tropics. The toads are moving from well-watered eastern areas of the continent into severely arid western regions; and within a decade or so, will encounter a narrow strip of coastal habitat where the only water-sources are artificial ponds and stock-watering sites \citep{Florance_Webb_Dempster_Kearney_Worthing_Letnic_2011, Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}. Thus, we might be able to prevent toads occupying 268,000km$^2$ of their potential range if we can prevent them moving down that narrow coastal corridor, and this can be achieved by restricting their access to artificial watering-points \citep{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013, Letnic_Webb_Jessop_Florance_Dempster_2014}. Models are encouraging as to the effectiveness of that barrier (if water sources could be eliminated), but those models have not incorporated the possibility of evolutionary responses to the barrier. Potentially, the toads' capacity for rapid evolutionary shifts in traits that affect rates of dispersal \citep{Phillips_Brown_Shine_2010, Brown_2014} might substantially affect the feasibility of a barrier in curtailing the Australian expansion of cane toads.
 
@@ -84,8 +84,8 @@ Here we investigate these issues with a simulation model.  Although motivated by
 \section{Methods}
 To investigate these ideas, we built a spatially-explicit simulation model
 that tracks a population spreading through space. The population is
-composed of sexually hermaphroditic individuals with discrete
-generations. All simulations were executed in R \citep{R_Core_Team_2014} and the code is available at \href{https://github.com/benflips/GBB}{https://github.com/benflips/GBB}.
+composed of sexually hermaphroditic individuals (obligately outcrossing) with discrete
+generations. The choice to make individuals hermaphrodites allows us to incorporate sexual recombination, but without the computational overhead of tracking non-reproducing individuals (i.e., males).  All simulations were executed in R \citep{R_Core_Team_2014} and the code is available at \href{https://github.com/benflips/GBB}{https://github.com/benflips/GBB}.
 
 \subsection{Population dynamics}
 
@@ -194,7 +194,7 @@ In this scenario, we examined three barrier widths (10, 15 and 20 units) such th
 barrier could be crossed by invasion front phenotypes, but not as easily by
 the low-dispersal phenotypes that characterise the range core (see section
 \ref{results}, Fig. \ref{fig:varbars}). We then simulated an invasion under identical conditions to those described in section 3.4.1
-above. After 50 generations of spread, we established our barrier 10 units from
+above (that is, individual based heritability, and a trade-off in place). After 50 generations of spread, we established our barrier 10 units from
 the invasion front, and introduced individuals with range core gene
 frequencies (at 20\% of carrying capacity) to the uncolonised region
 abutting the barrier (between the barrier and the oncoming invasion). We
@@ -298,7 +298,7 @@ A single realisation of spread after 50 generations.  The height of the bars rep
 \includegraphics[width=0.7\columnwidth]{figures/DispersalPhenotypes/DispersalPhenotypes.png}
 \caption{\label{fig:kernels}
 Dispersal kernels evolving in the core and at the leading edge
-of the range after 50 generations of spread.%
+of the range after 50 generations of spread.  The y-axis, probability density, can be thought of as a scaled frequency value.
 }
 \end{center}
 \end{figure}
