@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: full_article.aux
+The style file: plainnat.bst
+Illegal, another \bibstyle command---line 20 of file full_article.aux
+ : \bibstyle
+ :          {plain}
+I'm skipping whatever remains of this command
+Database file #1: bibliography/converted_to_latex.bib.bib
+Warning--empty journal in Perkins2016
+You've used 42 entries,
+            2773 wiz_defined-function locations,
+            965 strings with 15807 characters,
+and the built_in function-call counts, 24125 in all, are:
+= -- 2293
+> -- 1230
+< -- 19
++ -- 416
+- -- 372
+* -- 2272
+:= -- 3667
+add.period$ -- 190
+call.type$ -- 42
+change.case$ -- 249
+chr.to.int$ -- 40
+cite$ -- 85
+duplicate$ -- 858
+empty$ -- 1967
+format.name$ -- 440
+if$ -- 5022
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 41
+newline$ -- 282
+num.names$ -- 168
+pop$ -- 362
+preamble$ -- 1
+purify$ -- 208
+quote$ -- 0
+skip$ -- 630
+stack$ -- 0
+substring$ -- 1881
+swap$ -- 64
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 462
+warning$ -- 1
+while$ -- 180
+width$ -- 0
+write$ -- 679
+(There was 1 error message)

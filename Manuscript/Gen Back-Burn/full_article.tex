@@ -1,0 +1,340 @@
+\documentclass{article}
+\usepackage[affil-it]{authblk}
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{latexsym}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{multirow,booktabs}
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage{lineno}
+\usepackage{setspace} 
+\doublespacing
+
+% Text layout
+\topmargin 0.0cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 16cm 
+\textheight 21cm
+
+\begin{document}
+
+\title{The genetic backburn: a management tool for halting invasions.}
+
+\author{Ben L. Phillips}
+\affil{School of Biosciences, University of Melbourne}
+
+  
+\author{Rick Shine}
+\affil{School of Biological Sciences, University of Sydney}
+  
+\author{Reid Tingley}
+\affil{School of Biosciences, University of Melbourne}
+  
+
+
+\date{\today}
+
+\bibliographystyle{plain}
+
+\maketitle 
+
+
+\newpage
+\linenumbers
+
+\section{Abstract}
+The impact of an invasive species depends upon the extent of area across which it ultimately spreads.  A powerful strategy for limiting impact, then, is to limit spread, and this can most easily be achieved by managing or reinforcing natural barriers to spread.  Using a simulation model, we show that rapid evolutionary increases in dispersal can render permeable an otherwise effective barrier.  On the other hand, we also show that, once the barrier is reached, and if it holds, resultant evolutionary decreases in dispersal rapidly make the barrier more effective.  Finally, we sketch a strategy -- the genetic backburn -- in which low-dispersal individuals from the range core are translocated to the nearside of the barrier ahead of the oncoming invasion.  Under the right conditions, the genetic backburn --- by preventing invasion-front genotypes reaching the barrier, and hastening the evolutionary decrease in dispersal --- makes barriers substantially more effective.
+
+\bigskip
+
+Keywords --- \emph{Barrier, Contemporary evolution, Invasive species, Spatial sorting, Targeted gene flow}
+
+
+    
+\newpage
+\section{Background}
+Species ranges are shifting at an unprecedented rate in response to global change, and evolutionary theory provides an important perspective on this phenomenon \citep{Perkins_2012}.  Rates of dispersal and reproduction evolve upwards on expanding range fronts and so attempts to predict rates of range expansion that assume their constancy are likely to under-estimate the rate at which populations spread \citep{Phillips_Brown_Shine_2010}. At the same time, trade-offs between dispersal, reproduction, and competitive ability should lead to less competitive phenotypes emerging on the invasion front \citep{Burton_Travis_Phillips_2010}. Finally, once an invasion front encounters an environmental limit to its further spread, theory predicts that traits that increase rates of dispersal will be selected against \citep{Kubisch_Hovestadt_Poethke_2010, Phillips_2012}.
+
+These predictions regarding the evolution of range expansion phenotypes have important implications for managing the spread of invasive species.  The impact of any particular invader typically scales with the size of the area it comes to inhabit \citep{Epanchin-Niell_Hastings_2010}.  Thus, once an invasion is underway, our best strategy will often be containment; to slow or limit the extent of spread \citep{Sharov_1998}.  Unfortunately, localised control efforts aimed at stopping spread are rarely cost-efficient because they are typically directed at low-density populations: detection and reward-for-effort are low. A powerful alternative is to exploit natural landscape barriers that impede spread. Islands, for example, commonly offer refuge from invasive species, at almost no cost to managers.  Islands, however, are typically small, so a focus on ``mainland'' barriers can potentially prevent a much larger area from being colonised.  Barrier zones were used to temporarily halt, and successfully slow, the spread of the gypsy moth in the US \citep{Sharov_Liebhold_1998}, and potentially have application wherever abiotic conditions narrow the available habitat down to ``linear'' corridors.  Examples include invasions along streams and rivers \citep[e.g.,][]{Kerby_Riley_Kats_Wilson_2005}, along coastlines \citep[e.g.,][]{Cousens_Cousens_2011}, and other distributional choke-points \citep[e.g.,][]{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}.
+
+Rapid evolution can influence the effectiveness of barrier zones in two ways. First, increased dispersal rates of the vanguard may render barriers more easily surmountable: for any given barrier zone width, individuals from invasion-front populations are more likely to cross that barrier than are conspecifics from core populations \citep{Travis_Smith_Ranwala_2010}. Second, once a barrier is reached, natural selection and spatial sorting rapidly favour individuals of lower dispersal ability, driving dispersal rates downwards again \citep{Kubisch_Hovestadt_Poethke_2010, Phillips_2012}.  Thus, any barrier that is initially effective may become more effective as time passes because the population abutting the barrier will evolve lower rates of dispersal.  Finally, by exploiting the emergent differences in dispersal and competition abilities of core vs frontal populations, managers can potentially make barriers more effective through translocation: setting up a genetic backburn that prevents invasion front phenotypes ever encountering the barrier. 
+
+Our interest in these issues was stimulated by the spread of invasive cane toads (\emph{Rhinella marina}) through the Australian tropics. The toads are moving from well-watered eastern areas of the continent into severely arid western regions; and within a decade or so, will encounter a narrow strip of coastal habitat where the only water-sources are artificial ponds and stock-watering sites \citep{Florance_Webb_Dempster_Kearney_Worthing_Letnic_2011, Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}. Thus, we might be able to prevent toads occupying 268,000km$^2$ of their potential range if we can prevent them moving down that narrow coastal corridor, and this can be achieved by restricting their access to artificial watering-points \citep{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013, Letnic_Webb_Jessop_Florance_Dempster_2014}. Models are encouraging as to the effectiveness of that barrier (if water sources could be eliminated), but those models have not incorporated the possibility of evolutionary responses to the barrier. Potentially, the toads' capacity for rapid evolutionary shifts in traits that affect rates of dispersal \citep{Phillips_Brown_Shine_2010, Brown_2014} might substantially affect the feasibility of a barrier in curtailing the Australian expansion of cane toads.
+
+Here we investigate these issues with a simulation model.  Although motivated by the toad example, we frame the model in general terms and do not incorporate specific aspects of cane toad biology and life history. Our purpose is to investigate the general issue of dispersal evolution around spread barriers, and how this might affect management outcomes and strategies.  Using the model, we examine whether:
+\begin{enumerate}
+\item{} rapid evolution on the invasion front generates invasion front phenotypes that are more capable of breaching a barrier zone;
+\item{} once a barrier is reached, rapid evolution make barriers more effective over time; and
+\item{} translocating individuals from the core of the range to the near side of the barrier can establish a "genetic backburn" that prevents invasion front phenotypes reaching the barrier and so makes barriers substantially more effective.
+\end{enumerate}
+    
+    
+    
+    
+    
+
+\section{Methods}
+To investigate these ideas, we built a spatially-explicit simulation model
+that tracks a population spreading through space. The population is
+composed of sexually hermaphroditic individuals with discrete
+generations. All simulations were executed in R \citep{R_Core_Team_2014} and the code is available at \href{https://github.com/benflips/GBB}{https://github.com/benflips/GBB}.
+
+\subsection{Population dynamics}
+
+All individuals in the population have a maximum density-independent
+rate of reproduction, \(R_{max}\), modified by density dependence,
+described using the Beverton-Holt model \citep{Beverton_1958}, which yields their expected reproductive output, $\text{E}(W_i)$:
+
+\[ \text{E}(W_i)=\frac{R_{max}}{1+\alpha_i N}\].
+
+Here \(\alpha\) determines the strength of competition in the system,
+and this is where we introduce individual variation in reproductive
+output. We set \(\alpha_i=\frac{R_{max}-1}{N^* w_i}\). In this
+formulation \(N^*\) represents the carrying capacity that would be
+achieved if all individuals achieved a fecundity of \(R_{max}\), and
+\(w_i\) (\(0\leq w_i \leq 1\)) is a fitness modifier that causes some
+individuals to be more competitive at carrying capacity than others (see
+Evolutionary dynamics section, below).
+
+Finally, we introduced demographic stochasticity into the model by
+drawing each individual's expected fecundity from a poisson
+distribution: \(W_i\sim\text{Poiss}(\text{E}(W_i))\).
+
+\subsection{Spatial dynamics}
+
+We set this population up on a 1D lattice of contiguous cells (with a
+single reflective boundary constraining \(x\geq 0\)). Each cell takes up
+a length of 1 unit on the lattice, and local dynamics plays out within
+each cell on the lattice. Individuals disperse in continuous space, but
+are aggregated to the cell for the purposes of local dynamics.
+
+Immediately after birth (and the death of parents), individuals disperse
+according to their individual dispersal phenotype, \(d_i\). Dispersal is
+treated as a stochastic process with each individual displacing
+according to a draw from a non-standardised t distribution.  This distribution has a shape parameter, $v$, controlling the kurtosis, and a scale parameter (analogous to $\sigma$ in the Gaussian distribution) affecting the standard deviation.  As $v \rightarrow \infty$, the distribution converges on a Gaussian.  Thus, by specifying particular values for $v$, we can use the non-standardised t-distribution to control the degree of long distance dispersal in the model.  Each individual's new location was drawn from the non-standardised t distribution with a mean equal to the
+individual's current location in space, \(x_i\) and $\sigma=e^{d_i}$.   In almost all that follows we treated dispersal as Gaussian ($v \rightarrow \infty$), but we also briefly explore how relaxing this assumption (and allowing long distance dispersal) alters the effectiveness of a genetic blackburn (see below).  Individuals that disperse beyond the bounds of the
+lattice (i.e., \(x<0\)) are reflected back into the bounded space.
+Offspring inherit their parent's location, and so commence dispersal
+from that point (rather than the centre of the cell).
+
+\subsection{Evolutionary dynamics}
+
+We assumed that individuals choose a mate at random from within their cell. Each
+individual carries with it 20 independently-segregating diploid loci that contribute to a quantitative trait, the individual's dispersal phenotype, $d_i$.  There are two alleles possible at each locus: one that is neutral with
+regard to dispersal, and the other which increases the \(\text{E}(d_i)\)
+of the individual by an effect size, $m$, that is constant across all
+loci. 
+
+Under a simple quantitative genetic model, the total phenotypic variance in a population, $V_T=V_g + V_e$, where $V_g$ is the genetic variance (attributable to genetic differences between individuals), and $V_e$ is the environmental variance (attributable to the effect of environment on the expression of each individual's genotype).  In our model (which assumes no dominance or epistasis), the heritability of the trait, $h^2$ is the proportion of the total phenotypic variance that is attributable to genetic variance: $h^2=\frac{V_g}{V_T}$.  We set the initial heritability to a value of 0.3 and the total variance in the dispersal trait, $V_T=(\log{1.5})^2$.  These values determined our value of $V_g$, and, in combination with the number of loci, and our initial allele frequencies, determined our effect size, $m$.
+
+At initialisation, allele frequencies at all loci were set to 0.5, and alleles were assigned to individuals stochastically from this expectation using a binomial distribution. The
+total additive effect of all alleles within an individual generate the
+individual's expected dispersal phenotype, \(\text{E}(d_i)\), and the variance in \(\text{E}(d_i)\) is the additive genetic variance, $V_g$.  We wanted the mean dispersal phenotype to be independent of $V_g$ and achieved this by zero-centering the distribution of genotype values and then adding a value, $\mu$ that determined the mean \(\text{E}(d_i)\),
+
+\[ \text{E}(d_i)=\sum_{L=1}^{20}\sum_{j=1}^{2}(A_{i,j,L}m)-20m+\mu\],
+
+where $A$ denotes allelic values.  Throughout, we set $\mu=\log(2)$.
+
+The individual's realised dispersal
+phenotype is, however, subject to a random environmental effect, drawn from a normal distribution, such
+that \(d_i\sim\text{N}(\text{E}(d_i), \sqrt{V_e})\), where \(V_e\) is
+the environmental variance. This environmental variance is determined at
+the initialisation of the simulation such that the initial heritability ($h^2$)
+of \(d_i\) is 0.3: i.e., \(V_e=\frac{V_g(1-h^2)}{h^2}\). \(V_e\)
+therafter remains constant across space, time, and individuals.
+
+The trait value, \(d_i\) affects individual fitness at carrying capacity
+through a trade-off with \(w_i\) such that \(w_i=e^{-ke^{d_i}}\), where $k$ is a constant (set to 0.2 throughout). Thus
+individuals that tend to disperse further have reduced fitness at high
+population density.
+
+\subsection{Simulated scenarios}
+
+In all that follows we have set the following demographic parameters as
+constant: \(R_{max}=\) 5; \(N^*=\) 200.
+
+\subsubsection{The evolution of dispersal during
+spread}
+
+To obtain estimates of dispersal phenotypes that evolve within the range
+core and at the expanding edge, we simulated the spread of this
+population over 50 generations. These phenotypes (as well as basic
+information such as distance spread) were recorded over 20 replicates.
+We took the thousand most spatially-advanced individuals and the
+thousand least spatially-advanced individuals from each simulation, and
+pooled these individuals across replicates to estimate resultant gene
+frequencies on both the expanding front and in the core of the
+population. We also used these samples to examine the resultant
+differences in dispersal kernel between front and core.
+
+\subsubsection{The effectiveness of barriers to core vs frontal
+genotypes}
+
+Once we had estimates of gene frequency from core vs frontal
+populations, we used these two sets of frequencies to examine how the
+effectiveness of a barrier varies between core and frontal populations.
+To do this, we set up a population in 30 contiguous cells and allowed this population to spread towards a barrier set to be 5 units distant. Individuals dispersing into the barrier region were ``killed'', but individuals dispersing past the barrier region were allowed to survive. To ensure that gene frequencies remained approximately constant over time, we removed the dispersal-fitness trade-off (i.e., we set \(k=0\)), and, rather than have individual-level inheritance, drew allelic values for new individuals from the population-level gene frequencies already established. We ran each of these populations over 50 generations, and recorded in which generation (if any) the barrier was breached. We defined ``breached'' as the existence of \(>5\) individuals on the far side of the barrier. We ran these simulation tests for both sets of genotypes (frontal vs core), across barriers of size 1 to 50 units, with 20 replicate simulations per genotype/barrier combination.
+
+\subsubsection{The effect of rapid evolution once the barrier is reached}
+
+Here we simply compared the results of the above simulations with identical simulations in which the dispersal-fitness trade-off was present and in which inheritance was set back to individual-level (as described in Results).
+
+\subsubsection{The effect of a genetic
+backburn}
+
+In this scenario, we examined three barrier widths (10, 15 and 20 units) such that the
+barrier could be crossed by invasion front phenotypes, but not as easily by
+the low-dispersal phenotypes that characterise the range core (see section
+\ref{results}, Fig. \ref{fig:varbars}). We then simulated an invasion under identical conditions to those described in section 3.4.1
+above. After 50 generations of spread, we established our barrier 10 units from
+the invasion front, and introduced individuals with range core gene
+frequencies (at 20\% of carrying capacity) to the uncolonised region
+abutting the barrier (between the barrier and the oncoming invasion). We
+then followed the population for a further 50 generations to determine
+whether the barrier was breached. We replicated this scenario 20 times for each barrier width,
+and calculated the proportion of scenarios in which the population was halted at the barrier.
+
+Several key parameters likely have a bearing on the effect of the genetic backburn.  These parameters include the spatial extent across which we introduce new individuals, and the strength of the trade-off between fitness and dispersal.  To assess variation in these parameters, we varied the spatial extent of the introduction, and the strength of the trade-off.  We ran simulations spanning a range of
+extents from 0 (i.e., no backburn) to 10 units out from the barrier, and across a range of trade-off strengths ranging through $k=0$ (no trade-off) through $k=0.1$ (a weak trade-off), and $k=0.2$ (the default trade-off strength).  Finally, long-distance dispersal can have powerful effects on invasions: causing them to accelerate, and making them harder to stop at landscape barriers.  We briefly investigated how long distance dispersal affects the genetic backburn by running simulations at default levels for the trade-off ($k=0.2$), but with the kernel's shape parameter, $v$, varying through $v=\{10, 7, 5\}$ which corresponds to excess kurtosis values of 1, 2, and 3 respectively.
+
+
+  
+    
+
+\section{Results}\label{results}
+
+\subsection{Evolution during spread}\label{evolution-during-spread}
+
+Over 50 generations of spread, dispersal values consistently evolved upwards on the expanding
+range edge (see, for example, Fig. \ref{fig:realisation}). If we compare individuals closest to the expanding front
+with individuals from the population core, then it is clear that the dispersal kernels of the two populations have diverged
+during spread (Fig. \ref{fig:kernels}).
+
+\subsection{The effectiveness of barriers to core vs frontal
+genotypes}\label{the-effectiveness-of-barriers-to-core-vs-frontal-genotypes-1}
+
+Given our observation that dispersal kernels are different between
+frontal and core populations, we would expect the two populations to differ in
+their response to a barrier. Figure \ref{fig:varbars}A shows this effect: the dispersal kernel of core
+populations is more readily stopped
+by small barriers.
+
+\subsection{The effect of rapid evolution once the barrier is reached}
+
+If, however, we don't force the kernels to be constant through time, but allow rapid evolution of core vs frontal dispersal kernels as the invasion front encounters the barrier, we see a marked reduction in the tendency for the barrier to be breached. Comparing Figure \ref{fig:varbars} panels A and B, we can see that when evolution is allowed (panel B), the tendency for the barrier to be breached is markedly lower than when evolution is excluded (panel A).
+
+\subsection{The effect of a genetic backburn}
+We now examine the effect of a genetic backburn on barrier strength.  Figure \ref{fig:stagedsims} shows a single realisation of this scenario: a realisation in which the barrier remains intact, and invasion front phenotypes remain rare to non-existent immediately adjacent to the barrier.  Figure \ref{fig:barsims} shows that, under particular conditions, translocating individuals from the core of the range to the nearside of the barrier can markedly improve the capacity of the barrier to halt the further spread of the population. In one scenario (the 15-unit barrier, $k=0.2$), the genetic backburn increased the strength of the barrier from a 20\% chance of success to an 80\% chance.  As we would expect from intuition, the extent of the genetic backburn (i.e., the extent across which translocations are made back from the barrier) affects the result: larger backburns have a larger effect on barrier strength, but this improvement in barrier strength rapidly asymptotes.  The other clear result from this set of simulations is that the trade-off between dispersal and fitness also has a strong effect on the efficacy of a genetic backburn.  The backburn becomes less effective as the trade-off between dispersal and fitness is weakened (Fig. \ref{fig:barsims}).  Finally, our results show that long distance dispersal has a powerful influence on barrier strength (supplementary material).  When long distance dispersal is allowed, all barriers become less effective, and this decrease in effectiveness is closely related to the degree of long distance dispersal: as the dispersal kernel becomes more kurtotic, barriers decrease in their effectiveness.  Long distance dispersal also appears to mute the effect of a genetic backburn: although barriers still tend to become more effective under a backburn scenario, the degree of improvement in barrier strength is much more modest when long-distance dispersal is a major feature (supplementary material).
+
+\section{Discussion}
+
+Using a spatially-explicit individual-based model, we have shown that (i) dispersal ability can evolve upwards at expanding range margins, such that invasion-front individuals are more capable of overcoming landscape barriers than are individuals from the population core; (ii) landscape barriers that are capable of initially halting spread are rendered more effective by rapid evolution; and (iii) a genetic backburn --- translocating individuals from the population core in advance of a landscape barrier --- can further increase the barrier's effectiveness. In all cases these are proof of concept results --- there is an infinite parameter space that could be explored --- our aim is to highlight the powerful role that rapid evolution might play in both helping and, with careful management, hindering, the spread of an invasive population.
+
+Our first result --- that invasion leads to the evolution of increased dispersal ability on the invasion front --- is already well established.  Numerous empirical and theoretical results concur that dispersal rates should and, in fact do, rapidly increase on invasion fronts \citep[reviewed in][]{Phillips_Brown_Shine_2010}.  These evolutionary increases in dispersal can happen rapidly --- on time scales of relevance to management --- and can lead to invasions that accelerate over time \citep{Perkins_2012, Travis_Dytham_2002, Phillips_Brown_Travis_Shine_2008}.  Thus, rapid evolution tends to make it more difficult to manage invasive species as an invasion progresses.
+
+As well as causing invasions to accelerate, rapid evolution also potentially makes invasions more difficult to stop.  As has been pointed out previously \citep{Travis_Smith_Ranwala_2010}, dispersal barriers will become less effective as invasion front populations evolve increased dispersal.  Although we do not include the possibility in our model, it is also arguable that the increased growth rates that evolve in vanguard populations \citep{Phillips_2009} also render them more capable of establishing on the far side of a barrier: they grow quickly from small numbers and so are less susceptible to stochastic extinction.  Again, rapid evolution appears to act against managers' efforts to limit the spread and impact of an invader.
+
+Rapid evolution may not, however, be the management nightmare it currently appears to be.  Instead, the rapid evolution elicited by dispersal barriers can aid managers to halt the spread of invaders.  To begin with, it is clear that when an invasion front encounters a barrier, evolutionary forces conspire to drive dispersal rates downwards.  Again, this is not a new result \cite[e.g.,][]{Kubisch_Hovestadt_Poethke_2010, Phillips_2012}, but our model suggests that the evolutionary shifts can happen surprisingly rapidly and can have a large impact on the effectiveness of a barrier.  Our model, using a realistic value of heritability, showed that rapid evolution causes a spread barrier to be much more effective than consideration of frontal dispersal phenotypes alone would suggest (cf panels A and B, Fig. \ref{fig:varbars}).  While we would predict that dispersal should evolve downwards following the attainment of a barrier, the large impact on the probability of barrier breach seems surprising.  If, however, we remember that the first phenotypes to encounter the barrier (and so die in it) will be the most dispersive phenotypes, it becomes clear that the most dispersive individuals in the population will have been suffering substantially lower fitness for a number of generations before densities abutting the barrier become high.  Many of the most dispersive genotypes therefore will have been weeded out of the frontal population before the population abutting the barrier reaches high density.  Thus, landscape barriers and control efforts that effectively acts as barriers \citep[such as efforts to contain the spread of Gypsy Moth:][]{Sharov_1998} act to lower dispersal rates and so make barriers more effective over time.
+
+Our simulations suggest that assessing barrier strength against invasion front phenotypes will be a conservative assessment indeed.  For example, models of the effectiveness of an arid barrier in stopping further spread by invasive cane toads in Australia (using invasion front dispersal phenotypes but without allowing for rapid evolution) estimated a less than 10\% probability of toads breaching a 100 km-wide barrier \citep[Fig. 6 in][]{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}. Our model, showing that barriers are rendered more effective by rapid evolution, implies an even more encouraging scenario. Although we do not model the case of toads explicitly, the inclusion of evolutionary processes into the planning of that barrier may substantially modify the predicted benefits of a given management strategy, and in doing, may change the relative priority of alternative strategies. 
+
+While rapid evolution will, without any effort from a manager, render a barrier more effective over time, we also investigate a more active scenario, in which a manager translocates low-dispersal individuals from the range core to the barrier region.  This "genetic backburn" strategy ensures that invasion front phenotypes do not reach the barrier.  Instead, they encounter the biotic barrier of fitter, less dispersive genotypes.  Our simulations suggest that this strategy can, in the right circumstances, dramatically improve the strength of a barrier.  In situations where a barrier may not be quite wide enough to stop an invasion front, a barrier can, nonetheless, be rendered effective by asking it to stop the less dispersive individuals from the range core instead.    
+
+Our results also demonstrate that the effectiveness of a genetic backburn will depend on the degree to which invasion front phenotypes are less fit when placed in competition with phenotypes from the range core.  While our model suggests that the genetic backburn can improve barrier strength even in the absence of a trade-off between fitness and dispersal, this improvement is more modest than scenarios in which a strong trade-off exists.  Although the evolution of increased dispersal during invasion appears to be a robust expectation in nature, it is less clear that this necessitates a trade-off with fitness at high density (as instituted in our model).  Certainly, dispersal-competition trade-offs occur in nature \citep[e.g.,][]{Jakobsson_2003, Cadotte_2006}, though they are not ubiquitous \citep[e.g.,][]{Limberger_2011}.  If, however, we accept that increased dispersal comes at some cost, then paying that cost from competitive ability is the optimal strategy on an invasion front where conspecific density (and hence competition) is low.  Given sufficient time, then, an optimal strategy on the invasion front would be to reallocate resources from competitive ability and towards dispersal \citep{Burton_Travis_Phillips_2010}.  How often, and indeed whether, this optimal strategy emerges on invasion fronts \citep[where stochastic forces often lead to non-optimal phenotypes dominating:][]{Peischl_2015, Peischl_Dupanloup_Kirkpatrick_Excoffier_2013, Phillips_2015}, is yet to be clarified with empirical studies.
+
+In our simulations, the effectiveness of a landscape barrier was very sensitive to the degree of long-distance dispersal.  This is not a surprising result: if long distance dispersal is allowed, then landscape barriers will always be more prone to failure.  Our results also suggest, however, that the improvement offered by a genetic backburn is greatly diminished under long-distance dispersal scenarios.  The genetic backburn never appears to reduce a barrier's effectiveness, but the improvement in barrier strength can become negligible under long-distance dispersal (supplementary material).  This result likely arises because under long distance dispersal as implemented here the barrier can be breached even by range core phenotypes.  Thus introducing those phenotypes to the nearside of the barrier does not ensure the barrier is protected from phenotypes that can cross it.  How real this problem is in the real world will depend on the true shape of the dispersal kernel for the species of interest.  The degree of long distance dispersal determines how `fat' the kernel's tail is.  Because long-distance dispersal is rarely observed, robustly quantifying the shape of the tail of dispersal kernels is notoriously difficult \citep[e.g.,][]{Clark1998a}.  Mechanistic considerations of dispersal, however, suggest that, at large distances, dispersal kernels will usually be exponentially bounded \citep{Petrovskii2009a}.  That is, kernels may be fat-tailed to some distance before morphing to have rapidly-decaying tails, shaped like the tails of a Gaussian distribution \citep{Petrovskii2009a}.  The t-distribution (implemented here) does not have this property, and so likely overstates the reality of long distance dispersal at large distances.  Our results, then, should be seen as confirmation that long distance dispersal is important, but as with all of the above, system-specific models would need to be developed to understand the sensitivity of specific systems.
+
+With regard to specific applications, the use of genetic backburn as a management tool would likely make many managers nervous.  Managers have to deal with public perception, and explaining to the public the value of introducing an invasive species ahead of its current invasion front would be challenging.  In none of our simulations did implementation of a genetic backburn decrease a barrier's effectiveness.  Thus the manager probably does not risk making a barrier less permeable.  If the barrier fails despite the backburn, the risk is that the species may have reached the far side of the barrier a little earlier than it otherwise would have.  This risk is offset against the possibility of permanently excluding the invasive species from the same area.  Nonetheless, implementation of a genetic backburn would require careful consideration of the specific system at hand. In order of priority we would suggest:
+\begin{enumerate}
+	\item A careful consideration of the dispersal capacity of the species in the core of its range.  If the species exhibits capacity for very long distance dispersal, then any barrier may be ineffective.
+	\item Demonstration that dispersal shows evolved differences between range core and range front.
+	\item Ideally, demonstration that range core phenotypes outcompete invasion front phenotypes.
+\end{enumerate}
+
+These latter two pieces of evidence may be assessed by translocating range core individuals to a recently colonised area and monitoring the invasion (or failure) of range core phenotypes at the introduction locality, compared with a control location.  We note that in our motivating example -- that of the cane toad's invasion of northern Australia -- these pieces of evidence are largely in hand.  Cane toads disperse via the physical movement of adults, and so likely have an exponentially-bounded kernel \citep[e.g.,][]{Schwarzkopf2002}; cane toads have evolved to become substantially more dispersive on their invasion front \citep{Phillips_Brown_Travis_Shine_2008, Phillips2010}; and recent evidence suggests that there are fitness costs to having done so \citep{Brown2007, Hudson2015}.  Although a field demonstration of the competitive superiority of range core phenotypes has not been undertaken, there are strong indications from the decay of dispersal rate behind the invasion front that range core phenotypes outcompete those on the invasion front \citep{Lindstrom2013, Perkins2016}.
+
+More generally, the suite of evolutionary forces that fashion highly-dispersive individuals at the invasion front is wider than those applying in a spatially equilibrial population. At an expanding range edge, processes such as mutation surfing \citep{Klopfstein_Currat_Excoffier_2006, Travis_Munkemuller_Burton_Best_Dytham_Johst_2007}, enhanced kin competition \citep{Kubisch_Fronhofer_Poethke_Hovestadt_2013}, spatial sorting \citep{Shine_Brown_Phillips_2011}, and enhanced spatial selection \citep{Perkins_Phillips_Baskett_Hastings_2013} come into play.  Mutation surfing can undermine fitness directly \citep{Peischl_2015, Peischl_Dupanloup_Kirkpatrick_Excoffier_2013, Phillips_2015}, while spatial sorting, enhanced spatial selection, and kin competition work to fashion a phenotype that is adept at rapid dispersal, even if that dispersal enforces compromises in traits that enhance fitness in equilibrium populations \citep{Burton_Travis_Phillips_2010}.  By translocating range-core individuals to the range-edge, we eliminate the evolutionary conditions of the invasion front (the density gradient that drives spatial sorting as well as the high relatedness driving kin-competition effects), and bring invasion front phenotypes into direct conflict with fitter range-core phenotypes.  Our model shows that doing this can make barriers to spread substantially more effective.  This genetic backburn strategy is a new example of how ``targeted gene flow'' might be profitably used to achieve conservation outcomes \citep{Aitken_2013, Kelly2016}.  Currently such strategies are being investigated primarily in the context of mitigating the impact of climate change on biodiversity \citep{Aitken_2013, Hoffmann_Sgro_2011}, but our results hint that the careful movement of heritable variation may have much broader application.
+
+    
+\section{Data accessibility}
+All the code used to execute the model and run simulations is available online at \href{https://github.com/benflips/GBB}{https://github.com/benflips/GBB}.
+
+\section{Competing interests}
+We have no competing interests to declare.
+
+\section{Author contributions}
+The original idea was conceived jointly.  Phillips carried out model development and initial coding; Tingley cross-checked code; Phillips conducted all simulations; all authors contributed to drafting the manuscript.  
+
+\section{Acknowledgements}
+We thank Alex Perkins, Darren Southwell, Stuart Baird, and Justin Travis for interesting discussion around these ideas.  Funding was provided by the Australian Research Council (DP1094646), and the computational load was handled by James Cook University's high performance computing infrastructure. RT was funded by the Australian Research Council Centre of Excellence for Environmental Decisions.
+    
+ \bibliography{bibliography/converted_to_latex.bib}
+
+ 
+ 
+ \newpage
+ \bf{Figures}
+ \bigskip
+ 
+ \begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/Realisation/Realisation2_RT.png}
+\caption{\label{fig:realisation}
+A single realisation of spread after 50 generations.  The height of the bars represents density, and the colour represents the quantile of the dispersal phenotype, ($d_i$).%
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/DispersalPhenotypes/DispersalPhenotypes.png}
+\caption{\label{fig:kernels}
+Dispersal kernels evolving in the core and at the leading edge
+of the range after 50 generations of spread.%
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/varBarrsPlot-1/VarBarrs.png}
+\caption{\label{fig:varbars}
+The capacity to breach a dispersal barrier varies between core
+and frontal populations, and is eroded by rapid evolution. Panel A shows the situation in which gene frequencies remain constant over time (i.e., there is no evolution).  Panel B shows the situation in which gene frequencies evolve in response to encountering the barrier.  Each point is a replicate simulation, and the
+lines represent scaled logistic curves fitted to each dataset. Each
+simulation ran over 50 generations, so this was the maximum number of
+generations a barrier could be observed to be effective.
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/GBB_staged/GBB_staged.png}
+\caption{\label{fig:stagedsims}
+One realisation of a genetic backburn scenario.  Following 50 generations of spread, invasion front phenotypes are highly dispersive (indicated by heat colour scale) and at 50 generations, we relocate individuals from the range core (far left) to between the oncoming population and the barrier (indicated by black rectangle at the far right).  Figure panels show dynamics over the next twenty generations: the barrier remains intact and less dispersive (range-core) phenotypes invade back into the frontal population.  Highly dispersive phenotypes remain rare to non-existent in the immediate vicinity of the barrier.%
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/BarSims/BarSims.png}
+\caption{\label{fig:barsims}
+The strength of a barrier can be influenced by a genetic backburn.  Here we show three barrier sizes (widths = 10, 15 and 20 units), and the probability that, over 50 generations, the barrier stops the invasion.  In all cases, the strength of the barrier was improved by a genetic backburn: translocating individuals from the range core to the near side of the barrier.  This improvement in barrier strength was, however, dependent on the strength of the trade-off between dispersal and competitive ability.  As this trade-off became weaker, the improvement gained by the genetic backburn also diminished.}
+\end{center}
+\end{figure}
+
+
+    
+  
+\end{document}
+

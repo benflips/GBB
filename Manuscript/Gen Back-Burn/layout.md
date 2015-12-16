@@ -1,0 +1,11 @@
+section_Abstract_textit_The_impact__.tex
+2.tex
+section_Methods_To_investigate_these__.tex
+section_Results_label_results_subsection__.tex
+figures/Realisation/Realisation2_RT.png
+figures/DispersalPhenotypes/DispersalPhenotypes.png
+figures/varBarrsPlot-1/VarBarrs.png
+figures/GBB_staged/GBB_staged.png
+figures/BarSims/BarSims.png
+section_Discussion_Using_a_spatially__.tex
+5.tex

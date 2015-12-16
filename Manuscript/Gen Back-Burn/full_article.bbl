@@ -1,0 +1,370 @@
+\begin{thebibliography}{42}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aitken and Whitlock(2013)]{Aitken_2013}
+Sally~N. Aitken and Michael~C. Whitlock.
+\newblock {Assisted Gene Flow to Facilitate Local Adaptation to Climate
+  Change}.
+\newblock \emph{Annu. Rev. Ecol. Evol. Syst.}, 44\penalty0 (1):\penalty0
+  367--388, nov 2013.
+\newblock \doi{10.1146/annurev-ecolsys-110512-135747}.
+\newblock URL \url{http://dx.doi.org/10.1146/annurev-ecolsys-110512-135747}.
+
+\bibitem[Beverton and Holt(1958)]{Beverton_1958}
+Raymond J.~H. Beverton and Sidney~J. Holt.
+\newblock {On the Dynamics of Exploited Fish Populations}.
+\newblock \emph{Copeia}, 1958\penalty0 (3):\penalty0 242, aug 1958.
+\newblock \doi{10.2307/1440619}.
+\newblock URL \url{http://dx.doi.org/10.2307/1440619}.
+
+\bibitem[Brown et~al.(2007)Brown, Shilton, Phillips, and Shine]{Brown2007}
+G~P Brown, C~Shilton, B~L Phillips, and R~Shine.
+\newblock {Invasion stress and spinal arthritis in cane toads}.
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, 104:\penalty0 17698--17700, 2007.
+
+\bibitem[Brown et~al.(2014)Brown, Phillips, and Shine]{Brown_2014}
+G.~P. Brown, B.~L. Phillips, and R.~Shine.
+\newblock {The straight and narrow path: the evolution of straight-line
+  dispersal at a cane toad invasion front}.
+\newblock \emph{Proceedings of the Royal Society B: Biological Sciences},
+  281\penalty0 (1795):\penalty0 20141385--20141385, oct 2014.
+\newblock \doi{10.1098/rspb.2014.1385}.
+\newblock URL \url{http://dx.doi.org/10.1098/rspb.2014.1385}.
+
+\bibitem[Burton et~al.(2010)Burton, Travis, and
+  Phillips]{Burton_Travis_Phillips_2010}
+O~J Burton, J~M~J Travis, and B~L Phillips.
+\newblock {Trade-offs and the evolution of life-histories during range
+  expansion}.
+\newblock \emph{Ecology Letters}, 13:\penalty0 1210{\textendash}1220, 2010.
+
+\bibitem[Cadotte et~al.(2006)Cadotte, Mai, Jantz, Collins, Keele, and
+  Drake]{Cadotte_2006}
+Marc~William Cadotte, Donny~V. Mai, Samuel Jantz, Michael~D. Collins, Monica
+  Keele, and James~A. Drake.
+\newblock {On Testing the Competition-Colonization Trade-Off in a Multispecies
+  Assemblage}.
+\newblock \emph{Am Nat}, 168\penalty0 (5):\penalty0 704--709, nov 2006.
+\newblock \doi{10.1086/508296}.
+\newblock URL \url{http://dx.doi.org/10.1086/508296}.
+
+\bibitem[Clark(1998)]{Clark1998a}
+J.S. Clark.
+\newblock {Why trees migrate so fast: confronting theory with dispersal biology
+  and the paleorecord}.
+\newblock \emph{The American Naturalist}, 152\penalty0 (2):\penalty0 204--224,
+  1998.
+
+\bibitem[Cousens and Cousens(2011)]{Cousens_Cousens_2011}
+Roger~D. Cousens and Jane~M. Cousens.
+\newblock {Invasion of the New Zealand Coastline by European Sea-Rocket (Cakile
+  maritima) and American Sea-Rocket (Cakile edentula)}.
+\newblock \emph{Invasive Plant Science and Management}, 4\penalty0
+  (2):\penalty0 260{\textendash}263, 2011.
+\newblock ISSN 1939-7291.
+\newblock \doi{10.1614/IPSM-D-10-00060.1}.
+
+\bibitem[Epanchin-Niell and Hastings(2010)]{Epanchin-Niell_Hastings_2010}
+Rebecca~S. Epanchin-Niell and Alan Hastings.
+\newblock {Controlling established invaders: Integrating economics and spread
+  dynamics to determine optimal management}.
+\newblock \emph{Ecology Letters}, 13\penalty0 (4):\penalty0
+  528{\textendash}541, 2010.
+\newblock ISSN 1461023X.
+\newblock \doi{10.1111/j.1461-0248.2010.01440.x}.
+
+\bibitem[Florance et~al.(2011)Florance, Webb, Dempster, Kearney, Worthing, and
+  Letnic]{Florance_Webb_Dempster_Kearney_Worthing_Letnic_2011}
+Daniel Florance, Jonathan~K Webb, Tim Dempster, Michael~R Kearney, Alex
+  Worthing, and Mike Letnic.
+\newblock {Excluding access to invasion hubs can contain the spread of an
+  invasive vertebrate.}
+\newblock \emph{Proceedings. Biological sciences / The Royal Society},
+  278\penalty0 (1720):\penalty0 2900{\textendash}8, Oct 2011.
+\newblock ISSN 1471-2954.
+\newblock \doi{10.1098/rspb.2011.0032}.
+\newblock URL
+  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3151714&tool=pmcentrez&rendertype=abstract}.
+
+\bibitem[Hoffmann and Sgr{\`{o}}(2011)]{Hoffmann_Sgro_2011}
+Ary~a Hoffmann and Carla~M Sgr{\`{o}}.
+\newblock {Climate change and evolutionary adaptation.}
+\newblock \emph{Nature}, 470\penalty0 (7335):\penalty0 479{\textendash}85, Feb
+  2011.
+\newblock ISSN 1476-4687.
+\newblock \doi{10.1038/nature09670}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/21350480}.
+
+\bibitem[Hudson et~al.(2015)Hudson, Phillips, Brown, and Shine]{Hudson2015}
+Cameron~M Hudson, Benjamin~L Phillips, Gregory~P Brown, and Richard Shine.
+\newblock {Virgins in the vanguard : low reproductive frequency in
+  invasion-front cane toads}.
+\newblock \emph{Biological Journal of the Linnean Society}, 116:\penalty0
+  743--747, 2015.
+
+\bibitem[Jakobsson and Eriksson(2003)]{Jakobsson_2003}
+Anna Jakobsson and Ove Eriksson.
+\newblock {Trade-offs between dispersal and competitive ability: a comparative
+  study of wind-dispersed Asteraceae forbs}.
+\newblock \emph{Evolutionary Ecology}, 17\penalty0 (3):\penalty0 233--246,
+  2003.
+\newblock \doi{10.1023/a:1025526903281}.
+\newblock URL \url{http://dx.doi.org/10.1023/A:1025526903281}.
+
+\bibitem[Kelly and Phillips(2016)]{Kelly2016}
+Ella Kelly and Ben~L Phillips.
+\newblock {Targeted gene flow for conservation}.
+\newblock \emph{Conservation Biology}, in press, 2016.
+\newblock \doi{10.1111/cobi.12623}.
+
+\bibitem[Kerby et~al.(2005)Kerby, Riley, Kats, and
+  Wilson]{Kerby_Riley_Kats_Wilson_2005}
+Jacob~L. Kerby, Seth P~D Riley, Lee~B. Kats, and Paul Wilson.
+\newblock {Barriers and flow as limiting factors in the spread of an invasive
+  crayfish (Procambarus clarkii) in southern California streams}.
+\newblock \emph{Biological Conservation}, 126\penalty0 (3):\penalty0
+  402{\textendash}409, 2005.
+\newblock ISSN 00063207.
+\newblock \doi{10.1016/j.biocon.2005.06.020}.
+
+\bibitem[Klopfstein et~al.(2006)Klopfstein, Currat, and
+  Excoffier]{Klopfstein_Currat_Excoffier_2006}
+S~Klopfstein, M~Currat, and L~Excoffier.
+\newblock {The fate of mutations surfing on the wave of range expansion}.
+\newblock \emph{Molecular Biology and Evolution}, 23\penalty0 (3):\penalty0
+  482{\textendash}490, 2006.
+
+\bibitem[Kubisch et~al.(2010)Kubisch, Hovestadt, and
+  Poethke]{Kubisch_Hovestadt_Poethke_2010}
+Alexander Kubisch, Thomas Hovestadt, and Hans-Joachim Poethke.
+\newblock {On the elasticity of range limits during periods of expansion.}
+\newblock \emph{Ecology}, 91\penalty0 (10):\penalty0 3094{\textendash}9, Oct
+  2010.
+\newblock ISSN 0012-9658.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/21058568}.
+
+\bibitem[Kubisch et~al.(2013)Kubisch, Fronhofer, Poethke, and
+  Hovestadt]{Kubisch_Fronhofer_Poethke_Hovestadt_2013}
+Alexander Kubisch, Emanuel~a. Fronhofer, Hans~Joachim Poethke, and Thomas
+  Hovestadt.
+\newblock {Kin Competition as a Major Driving Force for Invasions}.
+\newblock \emph{The American Naturalist}, 181\penalty0 (5):\penalty0
+  700{\textendash}706, Mar 2013.
+\newblock ISSN 00030147.
+\newblock \doi{10.1086/670008}.
+\newblock URL \url{http://www.jstor.org/stable/info/10.1086/670008}.
+
+\bibitem[Letnic et~al.(2014)Letnic, Webb, Jessop, Florance, and
+  Dempster]{Letnic_Webb_Jessop_Florance_Dempster_2014}
+Mike Letnic, Jonathan~K. Webb, Tim~S. Jessop, Daniel Florance, and Tim
+  Dempster.
+\newblock {Artificial water points facilitate the spread of an invasive
+  vertebrate in arid Australia}.
+\newblock \emph{Journal of Applied Ecology}, 51\penalty0 (3):\penalty0
+  795{\textendash}803, 2014.
+\newblock ISSN 13652664.
+\newblock \doi{10.1111/1365-2664.12232}.
+
+\bibitem[Limberger and Wickham(2011)]{Limberger_2011}
+Romana Limberger and Stephen~A. Wickham.
+\newblock {Competition{\textendash}colonization trade-offs in a ciliate model
+  community}.
+\newblock \emph{Oecologia}, 167\penalty0 (3):\penalty0 723--732, may 2011.
+\newblock \doi{10.1007/s00442-011-2013-1}.
+\newblock URL \url{http://dx.doi.org/10.1007/s00442-011-2013-1}.
+
+\bibitem[Lindstr{\"{o}}m et~al.(2013)Lindstr{\"{o}}m, Brown, Sisson, Phillips,
+  and Shine]{Lindstrom2013}
+Tom Lindstr{\"{o}}m, Gregory~P Brown, Scott~A Sisson, Benjamin~L Phillips, and
+  Richard Shine.
+\newblock {Rapid shifts in dispersal behavior on an expanding range edge}.
+\newblock \emph{Proceedings of the National Academy of Sciences, USA},
+  110\penalty0 (33):\penalty0 13452--13456, 2013.
+\newblock
+  \doi{10.1073/pnas.1303157110/-/DCSupplemental.www.pnas.org/cgi/doi/10.1073/pnas.1303157110}.
+
+\bibitem[Peischl et~al.(2013)Peischl, Dupanloup, Kirkpatrick, and
+  Excoffier]{Peischl_Dupanloup_Kirkpatrick_Excoffier_2013}
+S~Peischl, I~Dupanloup, M~Kirkpatrick, and L~Excoffier.
+\newblock {On the accumulation of deleterious mutations during range
+  expansions.}
+\newblock \emph{Molecular ecology}, 22\penalty0 (24):\penalty0
+  5972{\textendash}82, Dec 2013.
+\newblock ISSN 1365-294X.
+\newblock \doi{10.1111/mec.12524}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/24102784}.
+
+\bibitem[Peischl et~al.(2015)Peischl, Kirkpatrick, and Excoffier]{Peischl_2015}
+Stephan Peischl, Mark Kirkpatrick, and Laurent Excoffier.
+\newblock {Expansion Load and the Evolutionary Dynamics of a Species Range}.
+\newblock \emph{The American Naturalist}, 185\penalty0 (4):\penalty0 E81--E93,
+  apr 2015.
+\newblock \doi{10.1086/680220}.
+\newblock URL \url{http://dx.doi.org/10.1086/680220}.
+
+\bibitem[Perkins et~al.(in review)Perkins, Boettiger, and
+  Phillips]{Perkins2016}
+T~Perkins, C~Boettiger, and B~L Phillips.
+\newblock {After the games are over: life-history trade-offs drive dispersal
+  attentuation following range expansion}.
+\newblock in review.
+
+\bibitem[Perkins(2012)]{Perkins_2012}
+T.~Alex Perkins.
+\newblock {Evolutionarily labile species interactions and spatial spread of
+  invasive species.}
+\newblock \emph{The American Naturalist}, 179:\penalty0 E37{\textendash}E54,
+  2012.
+
+\bibitem[Perkins et~al.(2013)Perkins, Phillips, Baskett, and
+  Hastings]{Perkins_Phillips_Baskett_Hastings_2013}
+T.~Alex Perkins, B~L Phillips, M~L Baskett, and A~Hastings.
+\newblock {Evolution of dispersal and life-history interact to drive
+  accelerating spread of an invasive species}.
+\newblock \emph{Ecology Letters}, 16\penalty0 (8):\penalty0
+  1079{\textendash}1087, 2013.
+\newblock \doi{10.1111/ele.12136}.
+
+\bibitem[Petrovskii and Morozov(2009)]{Petrovskii2009a}
+Sergei Petrovskii and Andrew Morozov.
+\newblock {Dispersal in a statistically structured population: fat tails
+  revisited}.
+\newblock \emph{The American Naturalist}, 173\penalty0 (2):\penalty0 278--289,
+  mar 2009.
+\newblock ISSN 1537-5323.
+\newblock \doi{10.1086/595755}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/19123917}.
+
+\bibitem[Phillips(2009)]{Phillips_2009}
+B.~L. Phillips.
+\newblock {The evolution of growth rates on an expanding range edge}.
+\newblock \emph{Biology Letters}, 5\penalty0 (6):\penalty0 802--804, jul 2009.
+\newblock \doi{10.1098/rsbl.2009.0367}.
+\newblock URL \url{http://dx.doi.org/10.1098/rsbl.2009.0367}.
+
+\bibitem[Phillips et~al.(2010{\natexlab{a}})Phillips, Brown, and
+  Shine]{Phillips2010}
+B~L Phillips, G~P Brown, and R~Shine.
+\newblock {Evolutionarily accelerated invasions: the rate of dispersal evolves
+  upwards during range advance of cane toads}.
+\newblock \emph{Journal of Evolutionary Biology}, 23\penalty0 (2010):\penalty0
+  2595--2601, 2010{\natexlab{a}}.
+
+\bibitem[Phillips et~al.(2010{\natexlab{b}})Phillips, Brown, and
+  Shine]{Phillips_Brown_Shine_2010}
+B~L Phillips, G~P Brown, and R~Shine.
+\newblock {The evolution of life-histories during range-advance}.
+\newblock \emph{Ecology}, 91\penalty0 (6):\penalty0 1617{\textendash}1627,
+  2010{\natexlab{b}}.
+
+\bibitem[Phillips(2012)]{Phillips_2012}
+Ben~L. Phillips.
+\newblock {Range shift promotes the formation of stable range edges}.
+\newblock \emph{Journal of Biogeography}, 39:\penalty0 153{\textendash}161, Sep
+  2012.
+\newblock ISSN 03050270.
+\newblock \doi{10.1111/j.1365-2699.2011.02597.x}.
+\newblock URL \url{http://doi.wiley.com/10.1111/j.1365-2699.2011.02597.x}.
+
+\bibitem[Phillips(2015)]{Phillips_2015}
+Ben~L Phillips.
+\newblock {Evolutionary processes make invasion speed difficult to predict}.
+\newblock \emph{Biological Invasions}, 17\penalty0 (7):\penalty0
+  1949{\textendash}1960, 2015.
+\newblock ISSN 1387-3547.
+\newblock \doi{10.1007/s10530-015-0849-8}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10530-015-0849-8}.
+
+\bibitem[Phillips et~al.(2008)Phillips, Brown, Travis, and
+  Shine]{Phillips_Brown_Travis_Shine_2008}
+Benjamin~L Phillips, Gregory~P Brown, Justin M~J Travis, and Richard Shine.
+\newblock {Reid{'}s paradox revisited: the evolution of dispersal kernels
+  during range expansion.}
+\newblock \emph{The American naturalist}, 172 Suppl\penalty0 (july):\penalty0
+  S34{\textendash}48, Jul 2008.
+\newblock ISSN 1537-5323.
+\newblock \doi{10.1086/588255}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/18554142}.
+
+\bibitem[Schwarzkopf and Alford(2002)]{Schwarzkopf2002}
+L~Schwarzkopf and R~A Alford.
+\newblock {Nomadic movement in tropical toads}.
+\newblock \emph{Oikos}, 96:\penalty0 492--506, 2002.
+
+\bibitem[Sharov and Liebhold(1998{\natexlab{a}})]{Sharov_1998}
+Alexei~A. Sharov and Andrew~M. Liebhold.
+\newblock {Model of slowing the spread of Gypsy Moth (Lepidoptera:
+  Lymantriidae) with a barrier zone}.
+\newblock \emph{Ecological Applications}, 8\penalty0 (4):\penalty0 1170--1179,
+  nov 1998{\natexlab{a}}.
+\newblock \doi{10.1890/1051-0761(1998)008[1170:mostso]2.0.co;2}.
+\newblock URL
+  \url{http://dx.doi.org/10.1890/1051-0761(1998)008[1170:mostso]2.0.co;2}.
+
+\bibitem[Sharov and Liebhold(1998{\natexlab{b}})]{Sharov_Liebhold_1998}
+Alexei~a. Sharov and Andrew~M. Liebhold.
+\newblock {Model of slowing the spread of gypsy moth (Lepidoptera:
+  Lymantriidae) with a barrier zone}.
+\newblock \emph{Ecological Applications}, 8\penalty0 (4):\penalty0
+  1170{\textendash}1179, 1998{\natexlab{b}}.
+
+\bibitem[Shine et~al.(2011)Shine, Brown, and
+  Phillips]{Shine_Brown_Phillips_2011}
+Richard Shine, Gregory~P Brown, and Benjamin~L Phillips.
+\newblock {An evolutionary process that assembles phenotypes through space
+  rather than through time}.
+\newblock \emph{PNAS}, 108:\penalty0 5708{\textendash}5711, 2011.
+\newblock
+  \doi{10.1073/pnas.1018989108/-/DCSupplemental.www.pnas.org/cgi/doi/10.1073/pnas.1018989108}.
+
+\bibitem[Team(2014)]{R_Core_Team_2014}
+R~Core Team.
+\newblock \emph{{R: A Language and Environment for Statistical Computing}}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2014.
+\newblock URL \url{{http://www.R-project.org/}}.
+
+\bibitem[Tingley et~al.(2013)Tingley, Phillips, Letnic, Brown, Shine, and
+  Baird]{Tingley_Phillips_Letnic_Brown_Shine_Baird_2013}
+Reid Tingley, Benjamin~L. Phillips, Mike Letnic, Gregory~P. Brown, Richard
+  Shine, and Stuart J.~E. Baird.
+\newblock {Identifying optimal barriers to halt the invasion of cane toads
+  Rhinella marina in arid Australia}.
+\newblock \emph{Journal of Applied Ecology}, 50\penalty0 (1):\penalty0
+  129{\textendash}137, Feb 2013.
+\newblock ISSN 00218901.
+\newblock \doi{10.1111/1365-2664.12021}.
+\newblock URL \url{http://doi.wiley.com/10.1111/1365-2664.12021}.
+
+\bibitem[Travis and Dytham(2002)]{Travis_Dytham_2002}
+J~M~J Travis and C~Dytham.
+\newblock {Dispersal evolution during invasions}.
+\newblock \emph{Evolutionary Ecology Research}, 4:\penalty0
+  1119{\textendash}1129, 2002.
+
+\bibitem[Travis et~al.(2007)Travis, M{\"{u}}nkem{\"{u}}ller, Burton, Best,
+  Dytham, and Johst]{Travis_Munkemuller_Burton_Best_Dytham_Johst_2007}
+J~M~J Travis, T~M{\"{u}}nkem{\"{u}}ller, O~J Burton, A~Best, C~Dytham, and
+  K~Johst.
+\newblock {Deleterious mutations can surf to high densities on the wave front
+  of an expanding population}.
+\newblock \emph{Molecular Biology and Evolution}, 24\penalty0 (10):\penalty0
+  2334{\textendash}2343, 2007.
+
+\bibitem[Travis et~al.(2010)Travis, Smith, and
+  Ranwala]{Travis_Smith_Ranwala_2010}
+Justin M.~J. Travis, Hannah~S. Smith, and Sudheera M.~W. Ranwala.
+\newblock {Towards a mechanistic understanding of dispersal evolution in
+  plants: conservation implications}.
+\newblock \emph{Diversity and Distributions}, 16\penalty0 (4):\penalty0
+  690{\textendash}702, May 2010.
+\newblock ISSN 13669516.
+\newblock \doi{10.1111/j.1472-4642.2010.00674.x}.
+\newblock URL \url{http://doi.wiley.com/10.1111/j.1472-4642.2010.00674.x}.
+\newblock Note the corrigendum for figure 7.
+
+\end{thebibliography}
