@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -290,6 +290,11 @@ Benjamin~L Phillips, Gregory~P Brown, Justin M~J Travis, and Richard Shine.
 \newblock ISSN 1537-5323.
 \newblock \doi{10.1086/588255}.
 \newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/18554142}.
+
+\bibitem[Roff(1997)]{Roff1997}
+Derek~A Roff.
+\newblock \emph{{Evolutionary quantitative genetics}}.
+\newblock Chapman and Hall, New York, 1997.
 
 \bibitem[Schwarzkopf and Alford(2002)]{Schwarzkopf2002}
 L~Schwarzkopf and R~A Alford.

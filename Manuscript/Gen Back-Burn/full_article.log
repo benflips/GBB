@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.5)  17 DEC 2015 08:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.5)  29 JAN 2016 15:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -837,55 +837,55 @@ Underfull \hbox (badness 5036) in paragraph at lines 9--16
  []
 
 [15] [16] [17] [18]
-Underfull \hbox (badness 1622) in paragraph at lines 300--308
+Underfull \hbox (badness 1622) in paragraph at lines 305--313
 \OT1/cmr/m/n/10 i-doptera: Ly-mantri-idae) with a bar-rier zone.  \OT1/cmr/m/it
 /10 Eco-log-i-cal Ap-pli-ca-tions\OT1/cmr/m/n/10 , 8(4):1170--1179, nov
  []
 
 [19]) [20]
-<figures/Realisation/Realisation2_RT.png, id=430, 5058.9pt x 2569.6pt>
+<figures/Realisation/Realisation2_RT.png, id=433, 1300.86pt x 650.43pt>
 File: figures/Realisation/Realisation2_RT.png Graphic file (type png)
 
 <use figures/Realisation/Realisation2_RT.png>
 Package pdftex.def Info: figures/Realisation/Realisation2_RT.png used on input 
 line 289.
-(pdftex.def)             Requested size: 318.66946pt x 161.8543pt.
+(pdftex.def)             Requested size: 318.66946pt x 159.33192pt.
 
-<figures/DispersalPhenotypes/DispersalPhenotypes.png, id=432, 1933.2225pt x 193
-3.2225pt>
+<figures/DispersalPhenotypes/DispersalPhenotypes.png, id=435, 650.43pt x 650.43
+pt>
 File: figures/DispersalPhenotypes/DispersalPhenotypes.png Graphic file (type pn
 g)
  <use figures/DispersalPhenotypes/DispersalPhenotypes.png>
 Package pdftex.def Info: figures/DispersalPhenotypes/DispersalPhenotypes.png us
 ed on input line 298.
-(pdftex.def)             Requested size: 318.66946pt x 318.67296pt.
+(pdftex.def)             Requested size: 318.66946pt x 318.67378pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/varBarrsPlot-1/VarBarrs.png, id=433, 2535.4725pt x 5231.545pt>
+<figures/varBarrsPlot-1/VarBarrs.png, id=436, 650.43pt x 1300.86pt>
 File: figures/varBarrsPlot-1/VarBarrs.png Graphic file (type png)
 
 <use figures/varBarrsPlot-1/VarBarrs.png>
 Package pdftex.def Info: figures/varBarrsPlot-1/VarBarrs.png used on input line
  308.
-(pdftex.def)             Requested size: 227.62204pt x 469.62134pt.
+(pdftex.def)             Requested size: 227.62204pt x 455.24828pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/GBB_staged/GBB_staged.png, id=434, 5179.35pt x 8002.89874pt>
+<figures/GBB_staged/GBB_staged.png, id=437, 1300.86pt x 1951.29pt>
 File: figures/GBB_staged/GBB_staged.png Graphic file (type png)
 
 <use figures/GBB_staged/GBB_staged.png>
 Package pdftex.def Info: figures/GBB_staged/GBB_staged.png used on input line 3
 21.
-(pdftex.def)             Requested size: 318.66946pt x 492.36464pt.
+(pdftex.def)             Requested size: 318.66946pt x 477.9958pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/BarSims/BarSims.png, id=435, 650.43pt x 650.43pt>
+<figures/BarSims/BarSims.png, id=438, 650.43pt x 650.43pt>
 File: figures/BarSims/BarSims.png Graphic file (type png)
 
 <use figures/BarSims/BarSims.png>
@@ -908,13 +908,13 @@ Package rerunfilecheck Info: File `full_article.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 339.
  ) 
 Here is how much of TeX's memory you used:
- 7789 strings out of 493315
- 114199 string characters out of 6137905
- 198945 words of memory out of 5000000
- 11000 multiletter control sequences out of 15000+600000
+ 7793 strings out of 493315
+ 114260 string characters out of 6137905
+ 198160 words of memory out of 5000000
+ 11003 multiletter control sequences out of 15000+600000
  13652 words of font info for 56 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,5n,28p,2018b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,5n,28p,2031b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -934,10 +934,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on full_article.pdf (25 pages, 2152001 bytes).
+Output written on full_article.pdf (25 pages, 1021762 bytes).
 PDF statistics:
- 546 PDF objects out of 1000 (max. 8388607)
- 485 compressed objects within 5 object streams
- 101 named destinations out of 1000 (max. 500000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 488 compressed objects within 5 object streams
+ 102 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

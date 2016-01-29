@@ -9,9 +9,9 @@ plotTradeOff(runList=spreadReps[[1]],
 	file="../../Figures/TradeOff.pdf")
 
 # Plot of a single realisation of spread.
-plotRealisation(runList=spreadReps[[1]], file="../../Figures/Realisation.pdf")
+#plotRealisation(runList=spreadReps[[1]], file="../../Figures/Realisation.pdf")
 
-plotRealisation2(runList=spreadReps[[1]], file="../../Figures/Realisation2.pdf")
+#plotRealisation2(runList=spreadReps[[1]], file="../../Figures/Realisation2.pdf")
 
 plotRealisation2_RT(runList=spreadReps[[1]], file="../../Figures/Realisation2_RT.pdf")
 
@@ -23,7 +23,7 @@ plotKernels(poptail, popfront, file="../../Figures/DispersalPhenotypes.pdf")
 
 load("../../Outputs/BarrierTests.RData")
 
-plotVarBarrs(frontMat, coreMat, frontMatEvol, coreMatEvol, file="../../Figures/VarBarrs.pdf", monitorGens)
+plotVarBarrs2(frontMat, coreMat, frontMatEvol, coreMatEvol, file="../../Figures/VarBarrs.pdf", monitorGens)
 
 load("../../Outputs/barSimsMat.RData")
 

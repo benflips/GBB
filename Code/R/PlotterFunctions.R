@@ -43,7 +43,7 @@ plotRealisation<-function(runList, file=NULL){
 # Modified further by Ben
 plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
   if (!is.null(file)) pdf(file=file, height=9, width=18)
-  par(mar=c(5,5,2,2), cex.lab=1.4)
+  par(mar=c(6,6,2,2), cex.lab=2)
   
   X<-runList$pop[,"X"] %/% 3
   Xplot<-tapply(runList$pop[,"X"], X, mean)
@@ -59,16 +59,21 @@ plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
   
   bp<-barplot(height=Y,
               xaxt="n",
-              xlab=expression(Distance~from~introduction~(italic(x))),
-              ylab="Mean density",
               bty="l",
               col=Y2col[as.numeric(Y2cut)],
               border=NA,
-              space=0 )
+              space=0,
+              ann=FALSE)
+  mtext(side=1, text=expression(Distance~from~introduction~(italic(x))), 
+  	line=5, cex=2.3)
+  mtext(side=2, text="Mean density", 
+  	line=3, cex=2.3)
+  
   axis(1,at=round(bp)[ round(bp) %% 10 == 0 ])
   image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(0, 100),
              horizontal=T,col= Y2col,legend.line = -2.5,legend.shrink=0.1,
-             legend.lab=expression(Dispersal~phenotype~quantile)) 
+             legend.lab=expression(Dispersal~phenotype~quantile),
+             legend.cex=1.5) 
 
                 
   if (!is.null(file)) dev.off()
@@ -78,7 +83,7 @@ plotRealisation2_RT<-function(runList, file=NULL, col.levels=30){
 plotGBB<-function(timeList, ints, file=NULL, col.levels=30){
 	npan<-length(ints)
 	if (!is.null(file)) pdf(file=file, height=9*npan, width=18)
-	par(mar=c(5,5,2,2), cex.lab=2, mfrow=c(npan, 1))
+	par(mar=c(5,5,3,2), cex.lab=3, mfrow=c(npan, 1), oma=c(5,5,0,0))
 	
 	X<-timeList[[ints[length(ints)]]][,"X"] %/% 3
 	Y2<-(tapply(timeList[[ints[length(ints)]]][,"di"], X, mean))
@@ -94,11 +99,10 @@ plotGBB<-function(timeList, ints, file=NULL, col.levels=30){
 		Y2<-(tapply(timeList[[ints[ii]]][,"di"], X, mean))
 		Y2cut<-cut((Y2), col.levels, breaks=bpoints, labels=FALSE)
   		
-  		xl<-switch((ii==length(ints))+1, "", expression(Distance~from~introduction~(italic(x))))
-		bp<-barplot(height=Y,
+  		bp<-barplot(height=Y,
 		  xaxt="n",
-		  xlab=xl,
-		  ylab="Mean density",
+		  xlab="",
+		  ylab="",
 		  bty="l",
 		  col=Y2col[as.numeric(Y2cut)],
 		  border=NA,
@@ -112,12 +116,25 @@ plotGBB<-function(timeList, ints, file=NULL, col.levels=30){
 		if (ii==length(ints)) {
 			bp<-c(bp, max(bp+10))
 			axis(1,at=round(bp)[ round(bp) %% 10 == 0 ],
-				labels=round(bp)[ round(bp) %% 10 == 0 ]*3)
+				labels=round(bp)[ round(bp) %% 10 == 0 ]*3,
+				cex.lab=2)
 		}
 		if (ii==1) image.plot(smallplot=c(0.25,0.75,0.92,0.94), legend.only=TRUE,zlim=c(min((Y2)),max((Y2))),
 			horizontal=T,col= Y2col,legend.line = -2.5,legend.shrink=0.1,
-			legend.lab=expression(Mean~dispersal~phenotype~(italic(d[i]))))
+			legend.lab=expression(Mean~dispersal~phenotype~(italic(d[i]))), legend.cex=2)
 	}
+	mtext("Mean density of individuals", 
+		side=2,
+		outer=TRUE,
+		adj=0.5,
+		cex=3)
+	mtext(expression(Distance~from~introduction~point~(italic(x))), 
+		side=1,
+		outer=TRUE,
+		adj=0.5,
+		padj=0.5,
+		cex=3)
+	
 	
 	if (!is.null(file)) dev.off() 
 }
@@ -197,18 +214,21 @@ plotKernels<-function(poptail, popfront, file=NULL){
 	dtail<-density(poptail[,"meanD"])
 	dfront<-density(popfront[,"meanD"])
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
-		par(mar=c(5,5,2,2), cex.lab=1.4)
+		par(mar=c(5,5,2,2), cex.lab=2)
 		plot(c(dtail$x, dfront$x), c(dtail$y, dfront$y), 
 			type="n",
 			xlab="Mean dispersal distance",
 			ylab="Probability density",
-			bty="l")
-		lines(dtail, lty=1)
-		lines(dfront, lty=2)
+			bty="l",
+			xlim=c(0, 12))
+		lines(dtail, lty=1, lwd=3)
+		lines(dfront, lty=2, lwd=3)
 		legend('topright', 
 			legend=c("Range core", "Expanding front"), 
 			lty=1:2,
-			bty="n")
+			lwd=3,
+			bty="n",
+			cex=1.5)
 	if (!is.null(file)) dev.off()
 }
 
@@ -216,7 +236,7 @@ plotKernels<-function(poptail, popfront, file=NULL){
 plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, monitorGens){
 	if (!is.null(file)) pdf(file=file, height=18, width=9)
 	par(mfrow=c(2,1), mar=c(5,5,2,2), cex.lab=1.4)
-	
+	#browser()
 	Yf<-frontMat[,2]==monitorGens
 	Xf<-frontMat[,1]
 	fMod<-glm(Yf~Xf, family=binomial)
@@ -236,7 +256,7 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 	Yc.e<-monitorGens*predict(cMod.e, newdata=list("Xc.e"=X), type="response")
 	
 	plotMat<-cbind(coreMat, frontMat[,2])
-	sunflowerplot(plotMat[,1], plotMat[,2:3],
+	matplot(plotMat[,1], plotMat[,2:3], #wtf, sunflowerplot?  Reid?
 		pch=1:2,
 		col=1:2,
 		cex=0.8,
@@ -255,7 +275,7 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 		bty="n")
 		
 	plotMat<-cbind(coreMatEvol, frontMatEvol[,2])
-	sunflowerplot(plotMat[,1], plotMat[,2:3],
+	matplot(plotMat[,1], plotMat[,2:3],
 		pch=1:2,
 		col=1:2,
 		cex=0.8,
@@ -276,6 +296,111 @@ plotVarBarrs<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, 
 	if (!is.null(file)) dev.off()
 }
 
+#creates the figure comparing different barriers against core and frontal gene freqs.
+plotVarBarrs2<-function(frontMat, coreMat, frontMatEvol, coreMatEvol, file=NULL, monitorGens){
+	if (!is.null(file)) pdf(file=file, height=18, width=9)
+	par(mfrow=c(2,1), mar=c(5,3,2,3), cex.lab=2, oma=c(0,3,0,3))
+	#browser()
+	Yf<-frontMat[,2]==monitorGens
+	Xf<-frontMat[,1]
+	fMod<-glm(Yf~Xf, family=binomial)
+	Yf.e<-frontMatEvol[,2]==monitorGens
+	Xf.e<-frontMatEvol[,1]
+	fMod.e<-glm(Yf.e~Xf.e, family=binomial)
+	Yc<-coreMat[,2]==monitorGens
+	Xc<-coreMat[,1]
+	cMod<-glm(Yc~Xc, family=binomial)
+	Yc.e<-coreMatEvol[,2]==monitorGens
+	Xc.e<-coreMatEvol[,1]
+	cMod.e<-glm(Yc.e~Xc.e, family=binomial)
+	X<-seq(1,monitorGens,0.2)
+	Yf<-monitorGens*predict(fMod, newdata=list("Xf"=X), type="response")
+	Yc<-monitorGens*predict(cMod, newdata=list("Xc"=X), type="response")
+	Yf.e<-monitorGens*predict(fMod.e, newdata=list("Xf.e"=X), type="response")
+	Yc.e<-monitorGens*predict(cMod.e, newdata=list("Xc.e"=X), type="response")
+	
+	plotMat<-cbind(coreMat, frontMat[,2])
+	sunflowerplot(plotMat[,1], plotMat[,2], 
+		col=1,
+		seg.col=1,
+		bty="l",
+		xlab="",
+		ylab="",
+		xlim=c(0, 50),
+		pch=1)
+	axis(side=4, 
+		line=0,
+		at=seq(0,50, 10),
+		labels=as.character(seq(0,1, 0.2)))
+	sunflowerplot(plotMat[,1], plotMat[,3], 
+		col=2,
+		seg.col=2,
+		bty="l",
+		xlab="",,
+		ylab="",
+		xlim=c(0, 50),
+		add=TRUE,
+		pch=2)
+	lines(X, Yc, lwd=3)
+	lines(X, Yf, col=2, lwd=3)
+	text(2, 50, labels="A)", cex=2)
+	legend(-2, 45, 
+		legend=c("Core", "Front"), 
+		title="Gene Frequencies\n(no evolution)", 
+		cex=1.3,
+		pch=1:2,
+		col=1:2,
+		bty="n")
+		
+	plotMat<-cbind(coreMatEvol, frontMatEvol[,2])
+	sunflowerplot(plotMat[,1], plotMat[,2], 
+		col=1,
+		seg.col=1,
+		bty="l",
+		xlab="Barrier Size",,
+		ylab="",
+		xlim=c(0, 50),
+		pch=1)
+	axis(side=4, 
+		line=0,
+		at=seq(0,50, 10),
+		labels=as.character(seq(0,1, 0.2)))
+	sunflowerplot(plotMat[,1], plotMat[,3], 
+		col=2,
+		seg.col=2,
+		bty="l",
+		xlab="",,
+		ylab="",
+		xlim=c(0, 50),
+		add=TRUE,
+		pch=2)
+	lines(X, Yc.e, lwd=3)
+	lines(X, Yf.e, col=2, lwd=3)
+	text(2, 50, labels="B)", cex=2)
+	legend(-2, 45, 
+		legend=c("Core", "Front"), 
+		title="Gene Frequencies\n(with evolution)",
+		cex=1.3, 
+		pch=1:2,
+		col=1:2,
+		bty="n")
+	
+	mtext("Barrier Strength (generations until barrier breach)", 
+		side=2,
+		outer=TRUE,
+		adj=0.5,
+		cex=2)
+	mtext("Probability that barrier holds for 50 generations", 
+		side=4,
+		outer=TRUE,
+		adj=0.5,
+		cex=2)
+		
+	
+	if (!is.null(file)) dev.off()
+}
+
+
 plotBarSims<-function(bsm, file=NULL){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
 	blev<-as.numeric(levels(as.factor(bsm[,"defBar"])))
@@ -284,19 +409,21 @@ plotBarSims<-function(bsm, file=NULL){
 	colvec<-1:length(blev)
 	pchvec<-1:length(blev)
 	lwdvec<-1:length(klev)
-	par(mar=c(5,5,2,2), cex.lab=1.4)
+	par(mar=c(5,5,2,2), cex.lab=2)
 	plot(bsm[,"extent"], bsm[,"breachTime"]/50,
 		type="n",
 		bty="l",
+		ylim=c(0,1.1),
 		xlab="Backburn extent",
-		ylab="Probability of barrier success")
+		ylab="Proportion of successful barriers")
 	X<-unique(bsm[,"extent"])
 	for (bb in 1:length(blev)){
 		cat("bb=",bb,"\n")
 		for (kk in 1:length(klev)){
 		cat("  kk=",kk, "\n")
 			temp<-bsm[(bsm[,"defBar"]==blev[bb] & bsm[,"k"]==klev[kk]),]
-			Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
+			Y<-tapply(temp[,"breachTime"]==50, temp[,"extent"], mean)
+			
 			points(X, Y, 
 				col=bb,
 				pch=bb)
@@ -306,13 +433,13 @@ plotBarSims<-function(bsm, file=NULL){
 				lwd=kk)
 		}
 	}
-	legend(x=0, y=1.04, 
+	legend(x=0, y=1.14, 
 		pch=pchvec,
 		col=colvec,
 		legend=blev,
 		title="Barrier width",
 		bty="n")
-	legend(x=-0.25, y=0.92, 
+	legend(x=-0.25, y=0.98, 
 		lwd=lwdvec,
 		col=1,
 		legend=klev,
@@ -320,6 +447,7 @@ plotBarSims<-function(bsm, file=NULL){
 		bty="n")
 	if (!is.null(file)) dev.off()
 }
+
 
 plotBarSimsVarv<-function(bsm, file=NULL){
 	if (!is.null(file)) pdf(file=file, height=9, width=9)
@@ -329,19 +457,20 @@ plotBarSimsVarv<-function(bsm, file=NULL){
 	colvec<-1:length(blev)
 	pchvec<-1:length(blev)
 	lwdvec<-1:length(vlev)
-	par(mar=c(5,5,2,2), cex.lab=1.4)
+	par(mar=c(5,5,2,2), cex.lab=2)
 	plot(bsm[,"extent"], bsm[,"breachTime"]/50,
 		type="n",
 		bty="l",
+		ylim=c(0,1.15),
 		xlab="Backburn extent",
-		ylab="Probability of barrier success")
+		ylab="Proportion of successful barriers")
 	X<-unique(bsm[,"extent"])
 	for (bb in 1:length(blev)){
 		cat("bb=",bb,"\n")
 		for (vv in 1:length(vlev)){
 		cat("  vv=",vv, "\n")
 			temp<-bsm[(bsm[,"defBar"]==blev[bb] & bsm[,"v"]==vlev[vv]),]
-			Y<-tapply(temp[,"breachTime"], temp[,"extent"], mean)/50
+			Y<-tapply(temp[,"breachTime"]==50, temp[,"extent"], mean)
 			points(X, Y, 
 				col=bb,
 				pch=bb)
@@ -351,13 +480,13 @@ plotBarSimsVarv<-function(bsm, file=NULL){
 				lwd=vv)
 		}
 	}
-	legend(x=0, y=1.04, 
+	legend(x=0, y=1.19, 
 		pch=pchvec,
 		col=colvec,
 		legend=blev,
 		title="Barrier width",
 		bty="n")
-	legend(x=-0.25, y=0.92, 
+	legend(x=1.75, y=1.19, 
 		lwd=lwdvec,
 		col=1,
 		legend=6/(vlev-4),
