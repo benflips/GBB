@@ -50,5 +50,5 @@ for (ee in 1:length(extSeq)){
 			bbMonitorGens,
 			v=v)
 		save(ext.parameters, extentMat, 
-			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, "_v", v, ".RData", sep=""))
+			file=paste(out.dir, "/ExtentTests", defBar, "_", Rep, "_k", k*10, ".RData", sep=""))
 }
